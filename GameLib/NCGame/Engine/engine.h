@@ -25,13 +25,9 @@ public:
 
 	bool IsQuit() { return m_isQuit; }
 	
-
-
 protected:
 	bool m_isQuit = false;
 	SDL_Window * m_window = nullptr;
 	SDL_Renderer * m_renderer = nullptr;
-
-	TextureManager* m_textureManager = nullptr;
 };
 

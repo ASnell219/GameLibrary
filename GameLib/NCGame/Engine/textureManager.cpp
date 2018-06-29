@@ -1,6 +1,7 @@
 #include "textureManager.h"
 #include <cassert>
 
+
 bool TextureManager::Initialize(Engine* engine)
 {
 	m_engine = engine;

@@ -21,13 +21,12 @@ public:
 	void Shutdown();
 	void Update();
 
-	SDL_Renderer* GetRenderer() { return m_renderer; }
+	SDL_Window* GetWindow() { return m_window; }
 
 	bool IsQuit() { return m_isQuit; }
 	
 protected:
 	bool m_isQuit = false;
 	SDL_Window * m_window = nullptr;
-	SDL_Renderer * m_renderer = nullptr;
 };
 

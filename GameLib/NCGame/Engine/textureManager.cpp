@@ -1,4 +1,5 @@
 #include "textureManager.h"
+#include "renderer.h"
 #include <cassert>
 
 
@@ -24,7 +25,7 @@ SDL_Texture * TextureManager::GetTexture(const std::string & textureName)
 	{
 		SDL_Surface* surface = SDL_LoadBMP(textureName.c_str());
 		assert(surface);
-		texture = SDL_CreateTextureFromSurface(m_engine->GetRenderer(), surface);
+		texture = SDL_CreateTextureFromSurface(Renderer::Instance()->GetRenderer(), surface);
 		SDL_FreeSurface(surface);
 
 		m_textures[textureName] = texture;

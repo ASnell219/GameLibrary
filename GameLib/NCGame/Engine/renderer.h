@@ -1,6 +1,8 @@
 #pragma once
 #include "engine.h"
 #include "singleton.h"
+#include "color.h"
+#include "vector2D.h"
 #include <map>
 
 class Renderer : public Singleton<Renderer>
@@ -9,10 +11,21 @@ public:
 	bool Initialize(Engine* engine);
 	void Shutdown();
 
-public:
+	SDL_Renderer* GetRenderer() { return m_renderer; }
+
+	void BeginFrame();
+	void EndFrame();
+
+	void SetColor(const Color& color);
+	void DrawTexture(SDL_Texture* texture, const Vector2D& position, float angle);
+	void DrawTexture(SDL_Texture* texture, const Vector2D& position, const Vector2D& scale, float angle);
+
+	friend Singleton<Renderer>;
+
+protected:
 	Renderer() {}
-	~Renderer() {}
 
 private:
 	Engine * m_engine;
+	SDL_Renderer* m_renderer = nullptr;
 };

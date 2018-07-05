@@ -6,8 +6,23 @@
 class InputManager : public Singleton<InputManager>
 {
 public:
+	enum eAction
+	{
+		IDLE,
+		PRESSED,
+		HELD,
+		RELEASED
+	};
+
+
+public:
 	bool Initialize(Engine* engine);
+	void Update();
 	void Shutdown();
+
+	eAction GetButtonAction(SDL_Scancode scancode);
+	eAction GetMouseButtonAction(int button);
+
 
 public:
 	InputManager() {}
@@ -15,4 +30,10 @@ public:
 
 private:
 	Engine * m_engine;
+	Uint8 * m_keystate;
+	Uint8 * m_prevKeystate;
+	Uint8 m_buttonState[5];
+
+	int m_numKeys;
+	
 };

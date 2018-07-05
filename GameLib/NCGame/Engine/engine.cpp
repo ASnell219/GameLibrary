@@ -7,6 +7,7 @@
 #include "matrix22.h"
 #include "timer.h"
 #include <cassert>
+#include <iostream>
 
 Vector2D position(400.0f, 300.0f);
 float angle(0.0f);
@@ -40,6 +41,8 @@ void Engine::Shutdown()
 void Engine::Update()
 {
 	Timer::Instance()->Update();
+	Timer::Instance()->SetTimeScale(1.0f);
+	InputManager::Instance()->Update();
 
 	SDL_Event event;
 	SDL_PollEvent(&event);
@@ -61,6 +64,12 @@ void Engine::Update()
 
 	int x, y;
 	SDL_GetMouseState(&x, &y);
+
+	if ((InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::PRESSED) ||
+		(InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::HELD))
+	{
+		std::cout << "pressed\n";
+	}
 
 	const Uint8* keystate = SDL_GetKeyboardState(nullptr);
 	if (keystate[SDL_SCANCODE_LEFT])  angle -= 80.0f * Timer::Instance()->DeltaTime();

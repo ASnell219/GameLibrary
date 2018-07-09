@@ -1,13 +1,12 @@
 #pragma once
-#include <iostream>
-
-#include "sdl.h"
 
 #ifdef ENGINE_EXPORTS  
 #define ENGINE_API __declspec(dllexport)   
 #else  
 #define ENGINE_API __declspec(dllimport)   
 #endif 
+
+#include "SDL.h" 
 
 class TextureManager;
 

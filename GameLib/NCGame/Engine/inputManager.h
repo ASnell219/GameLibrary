@@ -33,6 +33,7 @@ private:
 	Uint8 * m_keystate;
 	Uint8 * m_prevKeystate;
 	Uint8 m_buttonState[5];
+	Uint8 m_prevButtonState[5]; 
 
 	int m_numKeys;
 	

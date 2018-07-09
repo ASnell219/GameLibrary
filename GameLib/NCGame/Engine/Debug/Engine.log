@@ -1,2 +1,16 @@
-﻿  engine.cpp
-  Engine.vcxproj -> C:\Neumont\Q4\GameLib\NCGame\Debug\Engine.dll
+﻿  color.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  engine.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  renderer.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(43): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(44): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
+  text.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  textManager.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  textureManager.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'sdl2_ttf.lib'

@@ -16,7 +16,10 @@ public:
 	float& operator [] (size_t index) { assert(index <= 2); return ((&r)[index]); }
 	const float& operator [] (size_t index) const { assert(index <= 2); return ((&r)[index]); }
 
-	char ConvertU8(size_t index) const { assert(index <= 2); return static_cast<char>(Math::Clamp01((&r)[index]) * 255.0f); }
+	bool operator == (const Color & color) const { return Math::IsZero(r - color.r) && Math::IsZero(g - color.g) && Math::IsZero(b - color.b); }
+	bool operator != (const Color & color) const { return!(*this == color); }
+
+	//char ConvertU8(size_t index) const { assert(index <= 2); return static_cast<char>(Math::Clamp01((&r)[index]) * 255.0f); }
 
 	Color& operator += (const Color & color) { r += color.r; g += color.g; b += color.b; return *this; }
 	Color& operator -= (const Color & color) { r -= color.r; g -= color.g; b += color.b; return *this; }
@@ -27,6 +30,18 @@ public:
 	const Color operator - (const Color & color) const { Color c(*this); return c -= color; }
 	const Color operator * (const Color & color) const { Color c(*this); return c *= color; }
 	const Color operator / (const Color & color) const { Color c(*this); return c /= color; }
+
+	char ConvertU8(size_t index) const { assert(index <= 2); return static_cast<char>(Math::Clamp01((&r)[index]) * 255.0f); }
+	operator SDL_Color() const
+	{
+		SDL_Color color;
+		color.r = ConvertU8(0);
+		color.g = ConvertU8(1);
+		color.b = ConvertU8(2);
+		color.a = 255.0f;
+
+		return color;
+	}
 
 	Color& operator += (float s) { r += s; g += s; b += s; return *this; }
 	Color& operator -= (float s) { r -= s; g -= s; b -= s; return *this; }

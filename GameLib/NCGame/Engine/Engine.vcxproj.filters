@@ -56,6 +56,12 @@
     <ClInclude Include="engine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="textManager.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="text.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -93,6 +99,12 @@
     </ClCompile>
     <ClCompile Include="timer.cpp">
       <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="textManager.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="text.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

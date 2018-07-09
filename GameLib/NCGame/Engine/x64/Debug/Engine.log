@@ -1,4 +1,3 @@
 ﻿  engine.cpp
-  inputManager.cpp
-  Generating Code...
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

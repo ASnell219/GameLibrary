@@ -15,7 +15,8 @@ bool InputManager::Initialize(Engine * engine)
 
 	for (size_t i = 0; i < 5; i++)
 	{
-
+		m_buttonState[i] = 0;
+		m_prevButtonState[i] = 0;
 	}
 
 	return false;
@@ -26,6 +27,10 @@ void InputManager::Update()
 	memcpy(m_prevKeystate, m_keystate, m_numKeys);
 	const Uint8 * keystate = SDL_GetKeyboardState(nullptr);
 	memcpy(m_keystate, keystate, m_numKeys);
+
+	memcpy(m_prevButtonState, m_buttonState, 5);
+	const Uint32 buttonState = SDL_GetMouseState(nullptr, nullptr);
+	memcpy(m_buttonState, &buttonState, 5);
 }
 
 void InputManager::Shutdown()
@@ -38,13 +43,13 @@ InputManager::eAction InputManager::GetButtonAction(SDL_Scancode scancode)
 {
 	eAction action = eAction::IDLE;
 
-	if (m_keystate[scancode])
+	if (m_buttonState[scancode])
 	{
-		action = (m_prevKeystate[scancode]) ? eAction::HELD : eAction::PRESSED;
+		action = (m_prevButtonState[scancode]) ? eAction::HELD : eAction::PRESSED;
 	}
 	else
 	{
-		action = (m_prevKeystate[scancode]) ? eAction::RELEASED : eAction::IDLE;
+		action = (m_prevButtonState[scancode]) ? eAction::RELEASED : eAction::IDLE;
 	}
 
 	return action;
@@ -53,7 +58,16 @@ InputManager::eAction InputManager::GetButtonAction(SDL_Scancode scancode)
 InputManager::eAction InputManager::GetMouseButtonAction(int button)
 {
 	eAction action = eAction::IDLE;
+	button -= 1;
 
+	if (m_keystate[button])
+	{
+		action = (m_prevKeystate[button]) ? eAction::HELD : eAction::PRESSED;
+	}
+	else
+	{
+		action = (m_prevKeystate[button]) ? eAction::RELEASED : eAction::IDLE;
+	}
 
 
 	return eAction();

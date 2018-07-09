@@ -6,11 +6,15 @@
 #include "vector2D.h"
 #include "matrix22.h"
 #include "timer.h"
+#include "textManager.h"
 #include <cassert>
 #include <iostream>
+#include <SDL_ttf.h>
 
 Vector2D position(400.0f, 300.0f);
 float angle(0.0f);
+
+Text* text;
 
 bool Engine::Initialize()
 {
@@ -22,6 +26,10 @@ bool Engine::Initialize()
 	TextureManager::Instance()->Initialize(this);
 	InputManager::Instance()->Initialize(this);
 	AudioSystem::Instance()->Initialize(this);
+	TextManager::Instance()->Initialize(this);
+
+	text = TextManager::Instance()->CreateText("Hello!", "..\\content\\Courier.ttf", 24, Color::red);
+
 
 	return true;
 }
@@ -33,6 +41,7 @@ void Engine::Shutdown()
 	TextureManager::Instance()->Shutdown();
 	Renderer::Instance()->Shutdown();
 	Timer::Instance()->Shutdown();
+	TextManager::Instance()->Shutdown();
 	
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
@@ -60,16 +69,19 @@ void Engine::Update()
 		break;
 	}
 
+
+
 	SDL_PumpEvents();
 
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 
-	if ((InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::PRESSED) ||
+	/*if ((InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::PRESSED) ||
 		(InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::HELD))
 	{
 		std::cout << "pressed\n";
 	}
+	*/
 
 	const Uint8* keystate = SDL_GetKeyboardState(nullptr);
 	if (keystate[SDL_SCANCODE_LEFT])  angle -= 80.0f * Timer::Instance()->DeltaTime();
@@ -87,11 +99,13 @@ void Engine::Update()
 	Renderer::Instance()->BeginFrame();
 	Renderer::Instance()->SetColor(Color::black);
 
-	SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
-	Renderer::Instance()->DrawTexture(texture, position, angle);
+	std::vector<Color> colors = { Color::red, Color::green, Color::white };
+	text->SetText("Hello World!", colors[rand() % colors.size()]);
+	text->Draw(Vector2D(10.0f, 10.0f), 0.0f);
 
 	Renderer::Instance()->EndFrame();
 
+//	SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
 	/*
 	SDL_SetRenderDrawColor(m_renderer, 150, 0, 255, 255);
 	SDL_RenderClear(m_renderer);

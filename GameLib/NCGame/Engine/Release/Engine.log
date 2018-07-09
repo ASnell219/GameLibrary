@@ -1,6 +1,3 @@
 ﻿  engine.cpp
-     Creating library C:\Neumont\Q4\GameLib\NCGame\Release\Engine.lib and object C:\Neumont\Q4\GameLib\NCGame\Release\Engine.exp
-  Generating code
-  All 13 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  Engine.vcxproj -> C:\Neumont\Q4\GameLib\NCGame\Release\Engine.dll
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+LINK : fatal error LNK1181: cannot open input file 'sdl2_ttf.lib'

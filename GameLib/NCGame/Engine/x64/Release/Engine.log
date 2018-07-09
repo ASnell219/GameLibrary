@@ -1,6 +1,16 @@
-﻿  engine.cpp
-     Creating library C:\Neumont\Q4\GameLib\NCGame\x64\Release\Engine.lib and object C:\Neumont\Q4\GameLib\NCGame\x64\Release\Engine.exp
-  Generating code
-  All 13 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  Engine.vcxproj -> C:\Neumont\Q4\GameLib\NCGame\x64\Release\Engine.dll
+﻿  audioSystem.cpp
+  color.cpp
+  engine.cpp
+  inputManager.cpp
+  math.cpp
+  matrix22.cpp
+  matrix33.cpp
+  renderer.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(43): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(44): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
+  textManager.cpp
+  textureManager.cpp
+  timer.cpp
+  vector2D.cpp
+  vector3D.cpp
+LINK : fatal error LNK1181: cannot open input file 'sdl2_ttf.lib'

@@ -1,16 +1,29 @@
 ﻿  audioSystem.cpp
   color.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   engine.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   inputManager.cpp
   math.cpp
   matrix22.cpp
   matrix33.cpp
   renderer.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(43): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(44): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
+  text.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   textManager.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   textureManager.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   timer.cpp
   vector2D.cpp
   vector3D.cpp
-LINK : fatal error LNK1181: cannot open input file 'sdl2_ttf.lib'
+     Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Engine.exp
+  Generating code
+  508 of 508 functions (100.0%) were compiled, the rest were copied from previous compilation.
+    504 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Engine.dll

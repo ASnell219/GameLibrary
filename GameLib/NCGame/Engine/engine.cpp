@@ -99,13 +99,15 @@ void Engine::Update()
 	Renderer::Instance()->BeginFrame();
 	Renderer::Instance()->SetColor(Color::black);
 
+	SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
+
 	std::vector<Color> colors = { Color::red, Color::green, Color::white };
 	text->SetText("Hello World!", colors[rand() % colors.size()]);
 	text->Draw(Vector2D(10.0f, 10.0f), 0.0f);
 
 	Renderer::Instance()->EndFrame();
 
-//	SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
+	
 	/*
 	SDL_SetRenderDrawColor(m_renderer, 150, 0, 255, 255);
 	SDL_RenderClear(m_renderer);

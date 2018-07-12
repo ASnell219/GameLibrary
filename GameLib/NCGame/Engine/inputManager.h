@@ -31,8 +31,8 @@ public:
 
 	struct InputInfo
 	{
-		eDevice device;
 		int id;
+		eDevice device;
 		int index;
 	};
 
@@ -53,9 +53,19 @@ public:
 	void Update();
 	void Shutdown();
 
-	eButtonState GetButtonAction(SDL_Scancode scancode);
-	eButtonState GetMouseButtonAction(int button);
+	void AddAction(const std::string& action, int id, eDevice device, int index = 0);
+	eButtonState GetActionButton(const std::string& action);
+	float GetActionAxisAbsolute(const std::string& action);
+	float GetActionAxisRelative(const std::string& action);
 
+	float GetAxisAbsolute(int id, eDevice device = eDevice::MOUSE, int index = 0);
+	float GetAxisRelative(int id, eDevice device = eDevice::MOUSE, int index = 0);
+
+	eButtonState GetButtonState(int id, eDevice device = eDevice::KEYBOARD, int index = 0);
+
+protected:
+	bool GetButtonDown(int id, eDevice device, int index = 0);
+	bool GetPreviousButtonDown(int id, eDevice device, int index = 0);
 
 public:
 	InputManager() {}

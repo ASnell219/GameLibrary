@@ -48,6 +48,23 @@ void InputManager::Update()
 	SDL_Point axis;
 	SDL_GetMouseState(&axis.x, &axis.y);
 	m_mousePosition = axis;
+
+	//controller
+	for (ControllerInfo& controllerInfo : m_controllers)
+	{
+		memcpy(controllerInfo.prevButtonstate, controllerInfo.buttonstate, SDL_CONTROLLER_BUTTON_MAX);
+		for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++)
+		{
+			controllerInfo.buttonstate[i] = SDL_GameControllerGetButton(controllerInfo.controller, (SDL_GameControllerButton)i);
+		}
+
+		memcpy(controllerInfo.prevAxis, controllerInfo.axis, SDL_CONTROLLER_AXIS_MAX);
+		for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; i++)
+		{
+			Sint16 value = SDL_GameControllerGetAxis(controllerInfo.controller, (SDL_GameControllerAxis)i);
+			controllerInfo.axis[i] = value / float(SDL_MAX_SINT16);
+		}
+	}
 }
 
 void InputManager::Shutdown()
@@ -56,37 +73,166 @@ void InputManager::Shutdown()
 	delete m_prevKeystate;
 }
 
-/*InputManager::eButtonState InputManager::GetButtonAction(SDL_Scancode scancode)
+void InputManager::AddAction(const std::string & action, int id, eDevice device, int index)
 {
-	eButtonState action = eButtonState::IDLE;
-
-	if (m_mouseButtonState[scancode])
+	auto iter = m_actions.find(action);
+	if (iter == m_actions.end())
 	{
-		action = (m_prevMouseButtonState[scancode]) ? eButtonState::HELD : eButtonState::PRESSED;
+		InputInfo inputInfo = { id, device, index };
+		m_actions[action] = inputInfo;
+	}
+}
+
+InputManager::eButtonState InputManager::GetActionButton(const std::string & action)
+{
+	eButtonState state = eButtonState::IDLE;
+
+	auto iter = m_actions.find(action);
+	if (iter != m_actions.end())
+	{
+		InputInfo inputInfo = iter->second;
+		state = GetButtonState(inputInfo.id, inputInfo.device, inputInfo.index);
+	}
+
+	return state;
+}
+
+float InputManager::GetActionAxisAbsolute(const std::string & action)
+{
+	float axis = 0.0f;
+
+	auto iter = m_actions.find(action);
+	if (iter != m_actions.end())
+	{
+		InputInfo inputInfo = iter->second;
+		axis = GetAxisAbsolute(inputInfo.id, inputInfo.device, inputInfo.index);
+	}
+
+	return axis;
+}
+
+float InputManager::GetActionAxisRelative(const std::string & action)
+{
+	float axis = 0.0f;
+
+	auto iter = m_actions.find(action);
+	if (iter != m_actions.end())
+	{
+		InputInfo inputInfo = iter->second;
+		axis = GetAxisRelative(inputInfo.id, inputInfo.device, inputInfo.index);
+	}
+
+	return axis;
+}
+
+float InputManager::GetAxisAbsolute(int id, eDevice device, int index)
+{
+	float axis = 0.0f;
+
+	switch (device)
+	{
+	case eDevice::KEYBOARD:
+		assert(0);
+		break;
+
+	case eDevice::MOUSE:
+		axis = m_mousePosition[id];
+		break;
+
+	case eDevice::CONTROLLER:
+		assert(index < m_controllers.size());
+		axis = m_controllers[index].axis[id];
+		break;
+	}
+
+	return axis;
+}
+
+float InputManager::GetAxisRelative(int id, eDevice device, int index)
+{
+	float axis = 0.0f;
+
+	switch (device)
+	{
+	case eDevice::KEYBOARD:
+		assert(0);
+		break;
+
+	case eDevice::MOUSE:
+		axis = m_mousePosition[id] - m_prevMousePosition[id];
+		break;
+
+	case eDevice::CONTROLLER:
+		assert(index < m_controllers.size());
+		axis = m_controllers[index].axis[id] - m_controllers[index].prevAxis[id];
+		break;
+	}
+
+	return axis;
+}
+
+InputManager::eButtonState InputManager::GetButtonState(int id, eDevice device, int index)
+{
+	eButtonState state = eButtonState::IDLE;
+
+	bool buttonDown = GetButtonDown(id, device, index);
+	bool prevButtonDown = GetPreviousButtonDown(id, device, index);
+
+	if (buttonDown)
+	{
+		state = (prevButtonDown) ? eButtonState::HELD : eButtonState::PRESSED;
 	}
 	else
 	{
-		action = (m_prevMouseButtonState[scancode]) ? eButtonState::RELEASED : eButtonState::IDLE;
+		state = (prevButtonDown) ? eButtonState::RELEASED : eButtonState::IDLE;
 	}
 
-	return action;
+	return state;
 }
 
-InputManager::eButtonState InputManager::GetMouseButtonAction(int button)
+bool InputManager::GetButtonDown(int id, eDevice device, int index)
 {
-	eButtonState action = eButtonState::IDLE;
-	button -= 1;
+	bool buttonDown = false;
 
-	if (m_keystate[button])
+	switch (device)
 	{
-		action = (m_prevKeystate[button]) ? eButtonState::HELD : eButtonState::PRESSED;
-	}
-	else
-	{
-		action = (m_prevKeystate[button]) ? eButtonState::RELEASED : eButtonState::IDLE;
+	case eDevice::KEYBOARD:
+		buttonDown = m_keystate[id];
+		break;
+
+	case eDevice::MOUSE:
+		buttonDown = m_mouseButtonState & SDL_BUTTON(id);
+		break;
+
+	case eDevice::CONTROLLER:
+		assert(index < m_controllers.size());
+		buttonDown = m_controllers[index].buttonstate[id];
+		break;
 	}
 
-
-	return eButtonState();
+	return buttonDown;
 }
-*/
+
+bool InputManager::GetPreviousButtonDown(int id, eDevice device, int index)
+{
+	bool buttonDown = false;
+
+	switch (device)
+	{
+	case eDevice::KEYBOARD:
+		buttonDown = m_prevKeystate[id];
+		break;
+
+	case eDevice::MOUSE:
+		buttonDown = m_prevMouseButtonState & SDL_BUTTON(id);
+		break;
+
+	case eDevice::CONTROLLER:
+		assert(index < m_controllers.size());
+		buttonDown = m_controllers[index].prevButtonstate[id];
+		break;
+	}
+
+	return buttonDown;
+}
+

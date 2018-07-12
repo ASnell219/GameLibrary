@@ -28,8 +28,12 @@ bool Engine::Initialize()
 	AudioSystem::Instance()->Initialize(this);
 	TextManager::Instance()->Initialize(this);
 
-	text = TextManager::Instance()->CreateText("Hello!", "..\\content\\Courier.ttf", 24, Color::red);
+	InputManager::Instance()->AddAction("fire", SDL_BUTTON_LEFT, InputManager::eDevice::MOUSE);
+	InputManager::Instance()->AddAction("left", SDL_SCANCODE_LEFT, InputManager::eDevice::KEYBOARD);
+	InputManager::Instance()->AddAction("fire", SDL_SCANCODE_RIGHT, InputManager::eDevice::KEYBOARD);
+	//InputManager::Instance()->AddAction("steer", InputManager::eAxis::X)
 
+	text = TextManager::Instance()->CreateText("Hello!", "..\\content\\Courier.ttf", 24, Color::red);
 
 	return true;
 }
@@ -69,27 +73,31 @@ void Engine::Update()
 		break;
 	}
 
-
-
 	SDL_PumpEvents();
 
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 
-	/*if ((InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::PRESSED) ||
-		(InputManager::Instance()->GetButtonAction(SDL_SCANCODE_A) == InputManager::eAction::HELD))
+	if (InputManager::Instance()->GetActionButton("fire") == InputManager::eButtonState::PRESSED)
 	{
-		std::cout << "pressed\n";
+		std::cout << "button\n";
 	}
-	*/
-
+	
 	const Uint8* keystate = SDL_GetKeyboardState(nullptr);
+
+	float steer = InputManager::Instance()->GetActionAxisRelative("steer");
+	angle -= steer * Timer::Instance()->DeltaTime();
+
+
+	Vector2D force = Vector2D::zero;
+	/*
 	if (keystate[SDL_SCANCODE_LEFT])  angle -= 80.0f * Timer::Instance()->DeltaTime();
 	if (keystate[SDL_SCANCODE_RIGHT]) angle += 80.0f * Timer::Instance()->DeltaTime();
 
-	Vector2D force = Vector2D::zero;
+	
 	if (keystate[SDL_SCANCODE_UP])   force.y -= 200.0f * Timer::Instance()->DeltaTime();
 	if (keystate[SDL_SCANCODE_DOWN]) force.y += 200.0f * Timer::Instance()->DeltaTime();
+	*/
 
 	Matrix22 mx;
 	mx.Rotate(angle * Math::DegreesToRadians);
@@ -107,7 +115,6 @@ void Engine::Update()
 
 	Renderer::Instance()->EndFrame();
 
-	
 	/*
 	SDL_SetRenderDrawColor(m_renderer, 150, 0, 255, 255);
 	SDL_RenderClear(m_renderer);

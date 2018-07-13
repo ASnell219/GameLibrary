@@ -31,6 +31,9 @@ bool Engine::Initialize()
 	InputManager::Instance()->AddAction("fire", SDL_BUTTON_LEFT, InputManager::eDevice::MOUSE);
 	InputManager::Instance()->AddAction("left", SDL_SCANCODE_LEFT, InputManager::eDevice::KEYBOARD);
 	InputManager::Instance()->AddAction("fire", SDL_SCANCODE_RIGHT, InputManager::eDevice::KEYBOARD);
+
+	InputManager::Instance()->AddAction("horn", SDL_SCANCODE_SPACE, InputManager::eDevice::KEYBOARD);
+	AudioSystem::Instance()->AddSound("horn", "..\\content\\horn.wav");
 	//InputManager::Instance()->AddAction("steer", InputManager::eAxis::X)
 
 	text = TextManager::Instance()->CreateText("Hello!", "..\\content\\Courier.ttf", 24, Color::red);
@@ -88,16 +91,20 @@ void Engine::Update()
 	float steer = InputManager::Instance()->GetActionAxisRelative("steer");
 	angle -= steer * Timer::Instance()->DeltaTime();
 
+	if (InputManager::Instance()->GetActionButton("horn") == InputManager::eButtonState::PRESSED) 
+	{ 
+		AudioSystem::Instance()->PlaySound("horn", false);
+	}
 
 	Vector2D force = Vector2D::zero;
-	/*
+	
 	if (keystate[SDL_SCANCODE_LEFT])  angle -= 80.0f * Timer::Instance()->DeltaTime();
 	if (keystate[SDL_SCANCODE_RIGHT]) angle += 80.0f * Timer::Instance()->DeltaTime();
 
 	
 	if (keystate[SDL_SCANCODE_UP])   force.y -= 200.0f * Timer::Instance()->DeltaTime();
 	if (keystate[SDL_SCANCODE_DOWN]) force.y += 200.0f * Timer::Instance()->DeltaTime();
-	*/
+	
 
 	Matrix22 mx;
 	mx.Rotate(angle * Math::DegreesToRadians);
@@ -108,6 +115,7 @@ void Engine::Update()
 	Renderer::Instance()->SetColor(Color::black);
 
 	SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
+	Renderer::Instance()->DrawTexture(texture, position, angle);
 
 	std::vector<Color> colors = { Color::red, Color::green, Color::white };
 	text->SetText("Hello World!", colors[rand() % colors.size()]);

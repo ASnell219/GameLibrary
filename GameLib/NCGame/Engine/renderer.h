@@ -5,7 +5,7 @@
 #include "vector2D.h"
 #include <map>
 
-class Renderer : public Singleton<Renderer>
+class ENGINE_API Renderer : public Singleton<Renderer>
 {
 public:
 	bool Initialize(Engine* engine);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "math.h"
+#include "_math.h"
 #include <assert.h>
 
 class ENGINE_API Vector2D

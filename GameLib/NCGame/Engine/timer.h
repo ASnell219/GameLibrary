@@ -3,7 +3,7 @@
 #include "singleton.h"
 #include <map>
 
-class Timer : public Singleton<Timer>
+class ENGINE_API Timer : public Singleton<Timer>
 {
 public:
 	bool Initialize(Engine* engine);

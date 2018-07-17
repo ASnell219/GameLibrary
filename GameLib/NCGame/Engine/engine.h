@@ -6,7 +6,10 @@
 #define ENGINE_API __declspec(dllimport)   
 #endif 
 
-#include "SDL.h" 
+#pragma warning(disable:4251)
+
+#include <SDL.h>
+#include <SDL_ttf.h>
 
 class TextureManager;
 

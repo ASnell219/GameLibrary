@@ -3,7 +3,7 @@
 #include <map>
 #include "singleton.h"
 
-class TextureManager : public Singleton<TextureManager>
+class ENGINE_API TextureManager : public Singleton<TextureManager>
 {
 public:
 	bool Initialize(Engine* engine);

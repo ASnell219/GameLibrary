@@ -22,8 +22,8 @@ c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=':
   vector3D.cpp
      Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Engine.exp
   Generating code
-  508 of 508 functions (100.0%) were compiled, the rest were copied from previous compilation.
-    504 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  449 of 878 functions (51.1%) were compiled, the rest were copied from previous compilation.
+    304 functions were new in current compilation
+    49 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Engine.dll

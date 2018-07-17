@@ -4,7 +4,7 @@
 #include <map>
 #include <fmod.hpp>
 
-class AudioSystem : public Singleton<AudioSystem>
+class ENGINE_API AudioSystem : public Singleton<AudioSystem>
 {
 public:
 	bool Initialize(Engine* engine);

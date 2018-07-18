@@ -10,6 +10,9 @@ public:
 	Entity(const ID& id = ID()) : Object(id) {}
 	virtual ~Entity() {}
 
+	void Update();
+	void Draw();
+
 	void AddComponent(Component* component);
 	void RemoveComponent(Component* component);
 

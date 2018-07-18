@@ -80,6 +80,15 @@
     <ClInclude Include="component.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="renderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="spriteComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="transformComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -133,7 +142,10 @@
     <ClCompile Include="entity.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="component.cpp">
+    <ClCompile Include="spriteComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="transformComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

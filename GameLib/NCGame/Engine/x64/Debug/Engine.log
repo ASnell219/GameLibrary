@@ -1,6 +1,3 @@
 ﻿  entity.cpp
-  id.cpp
-  object.cpp
-  Generating Code...
      Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.exp
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

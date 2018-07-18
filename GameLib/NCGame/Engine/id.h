@@ -7,8 +7,8 @@ public:
 	ID();
 	ID(const std::string& id) : m_id(id) {}
 	
-	bool operator == (const ID& id) const { m_id == id.m_id; }
-	bool operator != (const ID& id) const { m_id != id.m_id; }
+	bool operator == (const ID& id) const { return m_id == id.m_id; }
+	bool operator != (const ID& id) const { return m_id != id.m_id; }
 
 	bool IsValid() const
 	{

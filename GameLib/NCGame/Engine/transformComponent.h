@@ -10,13 +10,13 @@ class ENGINE_API TransformComponent : public Component
 public:
 	Vector2D position;
 	float rotation;
-	float scale;
+	Vector2D scale;
 	Matrix33 matrix;
 
 public:
 	TransformComponent(Entity* owner) : Component(owner) {}
 
-	void Create(const Vector2D& position, float rotation = 0.0f, float scale = 1.0f);
+	void Create(const Vector2D& position, float rotation = 0.0f, const Vector2D& scale = Vector2D::one);
 	void Destroy();
 	void Update();
 };

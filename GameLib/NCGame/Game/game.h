@@ -1,6 +1,7 @@
 #pragma once
 
 class Engine;
+class Scene;
 
 class Game
 {
@@ -17,4 +18,5 @@ public:
 protected:
 	bool m_running = false;
 	Engine* m_engine = nullptr;
+	Scene* m_scene = nullptr;
 };

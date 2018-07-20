@@ -1,6 +1,6 @@
 #include "transformComponent.h"
 
-void TransformComponent::Create(const Vector2D& position, float rotation, float scale )
+void TransformComponent::Create(const Vector2D& position, float rotation, const Vector2D& scale )
 {
 	this->position = position;
 	this->rotation = rotation;

@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "texture.h"
 
 bool Renderer::Initialize(Engine * engine)
 {
@@ -40,8 +41,13 @@ void Renderer::DrawTexture(SDL_Texture * texture, const Vector2D & position, con
 	SDL_Point point = position;
 	SDL_Rect dest = { point.x, point.y, 400, 300 };
 	SDL_QueryTexture(texture, nullptr, nullptr, &dest.w , &dest.h);
-	dest.w *= scale.x;
-	dest.h *= scale.y;
+	dest.w *= int(scale.x);
+	dest.h *= int(scale.y);
 
 	SDL_RenderCopyEx(m_renderer, texture, nullptr, &dest, angle, nullptr, SDL_FLIP_NONE);
+}
+
+void Renderer::DrawTexture(Texture * texture, const Vector2D & position, const Vector2D & scale, float angle)
+{
+	DrawTexture(texture->m_sdlTexture, position, scale, angle);
 }

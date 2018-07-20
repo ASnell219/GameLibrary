@@ -17,7 +17,7 @@ public:
 	void RemoveComponent(Component* component);
 
 	template <typename T>
-	T*  GetComponenet()
+	T*  GetComponent()
 	{
 		T* component = nullptr;
 		for (Component* _component : m_components)

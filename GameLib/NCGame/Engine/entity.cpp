@@ -12,7 +12,7 @@ void Entity::Update()
 
 void Entity::Draw()
 {
-	IRenderComponent* renderComponenet = GetComponenet<IRenderComponent>();
+	IRenderComponent* renderComponenet = GetComponent<IRenderComponent>();
 	if (renderComponenet)
 	{
 		renderComponenet->Draw();

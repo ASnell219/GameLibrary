@@ -10,32 +10,34 @@
 #include "entity.h"
 #include "transformComponent.h"
 #include "spriteComponent.h"
+#include "scene.h"
 
 Vector2D position(400.0f, 300.0f);
 float angle(0.0f);
 Text* text;
-Entity* entity = nullptr;
 
 bool Game::Initialize()
 {
 	bool success = m_engine->Initialize();
-	InputManager::Instance()->AddAction("fire", SDL_BUTTON_LEFT, InputManager::eDevice::MOUSE);
-	InputManager::Instance()->AddAction("left", SDL_SCANCODE_LEFT, InputManager::eDevice::KEYBOARD);
-	InputManager::Instance()->AddAction("fire", SDL_SCANCODE_RIGHT, InputManager::eDevice::KEYBOARD);
 
-	InputManager::Instance()->AddAction("horn", SDL_SCANCODE_SPACE, InputManager::eDevice::KEYBOARD);
-	AudioSystem::Instance()->AddSound("horn", "..\\content\\horn.wav");
+	m_scene = new Scene();
 
-	text = TextManager::Instance()->CreateText("Hello!", "..\\content\\Courier.ttf", 24, Color::red);
+	for (size_t i = 0; i < 20; i++)
+	{
+		Entity* entity = new Entity();
+		TransformComponent* transformComponent = new TransformComponent(entity);
+		float x = (float)(rand() % 800);
+		float y = (float)(rand() % 600);
+		transformComponent->Create(Vector2D(x, y));
+		entity->AddComponent(transformComponent);
 
-	entity = new Entity(ID("player"));
-	TransformComponent* transformComponent = new TransformComponent(entity);
-	transformComponent->Create(Vector2D(30.0f, 30.0f));
-	entity->AddComponent(transformComponent);
+		SpriteComponent* spriteComponent = new SpriteComponent(entity);
+		spriteComponent->Create("..\\content\\ship.bmp");
+		entity->AddComponent(spriteComponent);
 
-	SpriteComponent* spriteComponent = new SpriteComponent(entity);
-	spriteComponent->Create("..\\content\\car.bmp");
-	entity->AddComponent(spriteComponent);
+		m_scene->AddEntity(entity);
+	}
+
 
 	m_running = success;
 
@@ -52,38 +54,49 @@ void Game::Update()
 	m_running = !m_engine->IsQuit();
 	m_engine->Update();
 
-	entity->Update();
-
-	const Uint8* keystate = SDL_GetKeyboardState(nullptr);
-
-	if (InputManager::Instance()->GetActionButton("horn") == InputManager::eButtonState::PRESSED)
-	{
-		AudioSystem::Instance()->PlaySound("horn", false);
-	}
-
-	Vector2D force = Vector2D::zero;
-
-	if (keystate[SDL_SCANCODE_LEFT])  angle -= 80.0f * Timer::Instance()->DeltaTime();
-	if (keystate[SDL_SCANCODE_RIGHT]) angle += 80.0f * Timer::Instance()->DeltaTime();
-
-	if (keystate[SDL_SCANCODE_UP])   force.y -= 200.0f * Timer::Instance()->DeltaTime();
-	if (keystate[SDL_SCANCODE_DOWN]) force.y += 200.0f * Timer::Instance()->DeltaTime();
-
-	Matrix22 mx;
-	mx.Rotate(angle * Math::DegreesToRadians);
-	force = force * mx;
-	position = position + force;
+	m_scene->Update();
 
 	Renderer::Instance()->BeginFrame();
 	Renderer::Instance()->SetColor(Color::black);
 
-	SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
-	Renderer::Instance()->DrawTexture(texture, position, angle);
-
-	entity->Draw();
+	m_scene->Draw();
 
 	Renderer::Instance()->EndFrame();
 }
+
+
+
+
+//InputManager::Instance()->AddAction("fire", SDL_BUTTON_LEFT, InputManager::eDevice::MOUSE);
+
+
+//InputManager::Instance()->AddAction("horn", SDL_SCANCODE_SPACE, InputManager::eDevice::KEYBOARD);
+//AudioSystem::Instance()->AddSound("horn", "..\\content\\horn.wav");
+
+//text = TextManager::Instance()->CreateText("Hello!", "..\\content\\Courier.ttf", 24, Color::red);
+
+/*onst Uint8* keystate = SDL_GetKeyboardState(nullptr);
+
+if (InputManager::Instance()->GetActionButton("horn") == InputManager::eButtonState::PRESSED)
+{
+	AudioSystem::Instance()->PlaySound("horn", false);
+}*/
+
+/*SDL_Texture* texture = TextureManager::Instance()->GetTexture("..\\content\\car.bmp");
+Renderer::Instance()->DrawTexture(texture, position, angle);*/
+
+//Vector2D force = Vector2D::zero;
+
+//if (keystate[SDL_SCANCODE_LEFT])  angle -= 80.0f * Timer::Instance()->DeltaTime();
+//if (keystate[SDL_SCANCODE_RIGHT]) angle += 80.0f * Timer::Instance()->DeltaTime();
+
+//if (keystate[SDL_SCANCODE_UP])   force.y -= 200.0f * Timer::Instance()->DeltaTime();
+//if (keystate[SDL_SCANCODE_DOWN]) force.y += 200.0f * Timer::Instance()->DeltaTime();
+
+//Matrix22 mx;
+//mx.Rotate(angle * Math::DegreesToRadians);
+//force = force * mx;
+//position = position + force;
 
 //std::vector<Color> colors = { Color::red, Color::green, Color::white };
 //text->SetText("Hello World!", colors[rand() % colors.size()]);

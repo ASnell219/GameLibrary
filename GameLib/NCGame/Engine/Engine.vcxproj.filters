@@ -89,6 +89,18 @@
     <ClInclude Include="transformComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="controllerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="shipControllerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -147,6 +159,15 @@
     </ClCompile>
     <ClCompile Include="transformComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="shipControllerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

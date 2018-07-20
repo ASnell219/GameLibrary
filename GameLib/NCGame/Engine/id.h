@@ -1,7 +1,8 @@
 #pragma once
+#include "engine.h"
 #include <string>
 
-class ID
+class ENGINE_API ID
 {
 public:
 	ID();

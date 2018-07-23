@@ -32,7 +32,7 @@ bool Game::Initialize()
 		entity->AddComponent(transformComponent);
 
 		SpriteComponent* spriteComponent = new SpriteComponent(entity);
-		spriteComponent->Create("..\\content\\ship.bmp");
+		spriteComponent->Create("..\\content\\ship.png");
 		entity->AddComponent(spriteComponent);
 
 		m_scene->AddEntity(entity);
@@ -57,7 +57,7 @@ void Game::Update()
 	m_scene->Update();
 
 	Renderer::Instance()->BeginFrame();
-	Renderer::Instance()->SetColor(Color::black);
+	Renderer::Instance()->SetColor(Color::red);
 
 	m_scene->Draw();
 

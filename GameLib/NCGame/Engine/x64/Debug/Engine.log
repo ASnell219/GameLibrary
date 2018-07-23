@@ -1,15 +1,15 @@
-﻿  entity.cpp
-  id.cpp
-  object.cpp
+﻿  engine.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   renderer.cpp
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
-  scene.cpp
-  shipControllerComponent.cpp
   spriteComponent.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  text.cpp
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   texture.cpp
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
-  transformComponent.cpp
+  textureManager.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   Generating Code...
      Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.exp
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

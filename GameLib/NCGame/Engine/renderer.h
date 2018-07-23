@@ -3,6 +3,7 @@
 #include "singleton.h"
 #include "color.h"
 #include "vector2D.h"
+#include <sdl_image.h>
 #include <map>
 
 class Texture;

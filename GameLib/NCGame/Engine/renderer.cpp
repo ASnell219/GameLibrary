@@ -5,11 +5,13 @@ bool Renderer::Initialize(Engine * engine)
 {
 	m_engine = engine;
 	m_renderer = SDL_CreateRenderer(m_engine->GetWindow(), -1, 0);
+	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 	return false;
 }
 
 void Renderer::Shutdown()
 {
+	IMG_Quit();
 }
 
 void Renderer::BeginFrame()

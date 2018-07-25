@@ -11,6 +11,8 @@
 #include "transformComponent.h"
 #include "spriteComponent.h"
 #include "scene.h"
+#include "shipControllerComponent.h"
+#include "kinematicComponent.h"
 
 Vector2D position(400.0f, 300.0f);
 float angle(0.0f);
@@ -22,22 +24,26 @@ bool Game::Initialize()
 
 	m_scene = new Scene();
 
-	for (size_t i = 0; i < 20; i++)
-	{
-		Entity* entity = new Entity();
-		TransformComponent* transformComponent = new TransformComponent(entity);
-		float x = (float)(rand() % 800);
-		float y = (float)(rand() % 600);
-		transformComponent->Create(Vector2D(x, y));
-		entity->AddComponent(transformComponent);
+	Entity* entity = new Entity();
+	TransformComponent* transformComponent = new TransformComponent(entity);
+	float x = (float)(rand() % 800);
+	float y = (float)(rand() % 600);
+	transformComponent->Create(Vector2D(x, y));
+	entity->AddComponent(transformComponent);
 
-		SpriteComponent* spriteComponent = new SpriteComponent(entity);
-		spriteComponent->Create("..\\content\\ship.png");
-		entity->AddComponent(spriteComponent);
+	SpriteComponent* spriteComponent = new SpriteComponent(entity);
+	spriteComponent->Create("..\\content\\ship.png");
+	entity->AddComponent(spriteComponent);
 
-		m_scene->AddEntity(entity);
-	}
+	ShipControllerComponent* shipControllerComponent = new ShipControllerComponent(entity);
+	shipControllerComponent->Create(800.0f);
+	entity->AddComponent(shipControllerComponent);
 
+	KinematicComponent* kinematic = new KinematicComponent(entity);
+	kinematic->Create();
+	entity->AddComponent(kinematic);
+
+	m_scene->AddEntity(entity);
 
 	m_running = success;
 

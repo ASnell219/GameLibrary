@@ -7,6 +7,7 @@
 #include "matrix22.h"
 #include "timer.h"
 #include "textManager.h"
+#include "physics.h"
 #include <cassert>
 #include <iostream>
 #include <SDL_ttf.h>
@@ -24,7 +25,7 @@ bool Engine::Initialize()
 	InputManager::Instance()->Initialize(this);
 	AudioSystem::Instance()->Initialize(this);
 	TextManager::Instance()->Initialize(this);
-
+	Physics::Instance()->Initialize(this);
 	
 
 	return true;
@@ -32,12 +33,14 @@ bool Engine::Initialize()
 
 void Engine::Shutdown()
 {
+	Physics::Instance()->Shutdown();
+	TextManager::Instance()->Shutdown();
 	AudioSystem::Instance()->Shutdown();
 	InputManager::Instance()->Shutdown();
 	TextureManager::Instance()->Shutdown();
 	Renderer::Instance()->Shutdown();
 	Timer::Instance()->Shutdown();
-	TextManager::Instance()->Shutdown();
+	
 	
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
@@ -48,6 +51,8 @@ void Engine::Update()
 	Timer::Instance()->Update();
 	Timer::Instance()->SetTimeScale(1.0f);
 	InputManager::Instance()->Update();
+	AudioSystem::Instance()->Update();
+	Physics::Instance()->Update();
 
 	SDL_Event event;
 	SDL_PollEvent(&event);

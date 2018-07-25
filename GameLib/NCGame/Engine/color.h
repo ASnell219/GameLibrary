@@ -38,7 +38,7 @@ public:
 		color.r = ConvertU8(0);
 		color.g = ConvertU8(1);
 		color.b = ConvertU8(2);
-		color.a = 255.0f;
+		color.a = ConvertU8(255.0f);
 
 		return color;
 	}

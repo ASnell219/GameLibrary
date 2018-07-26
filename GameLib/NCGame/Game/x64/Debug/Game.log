@@ -1,5 +1,5 @@
 ﻿  game.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: 'argument': conversion from 'float' to '::size_t', possible loss of data
+  ship.cpp
   shipControllerComponent.cpp
   Generating Code...
   Game.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Game.exe

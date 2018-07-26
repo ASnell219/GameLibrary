@@ -8,11 +8,9 @@
 #include "textureManager.h"
 #include "timer.h"
 #include "entity.h"
-#include "transformComponent.h"
-#include "spriteComponent.h"
 #include "scene.h"
-#include "shipControllerComponent.h"
-#include "kinematicComponent.h"
+#include "ship.h"
+
 
 Vector2D position(400.0f, 300.0f);
 float angle(0.0f);
@@ -24,26 +22,12 @@ bool Game::Initialize()
 
 	m_scene = new Scene();
 
-	Entity* entity = new Entity();
-	TransformComponent* transformComponent = new TransformComponent(entity);
+	Ship* ship = new Ship();
 	float x = (float)(rand() % 800);
 	float y = (float)(rand() % 600);
-	transformComponent->Create(Vector2D(x, y));
-	entity->AddComponent(transformComponent);
+	ship->Create(Vector2D(x, y));
 
-	SpriteComponent* spriteComponent = new SpriteComponent(entity);
-	spriteComponent->Create("..\\content\\ship.png");
-	entity->AddComponent(spriteComponent);
-
-	ShipControllerComponent* shipControllerComponent = new ShipControllerComponent(entity);
-	shipControllerComponent->Create(800.0f);
-	entity->AddComponent(shipControllerComponent);
-
-	KinematicComponent* kinematic = new KinematicComponent(entity);
-	kinematic->Create();
-	entity->AddComponent(kinematic);
-
-	m_scene->AddEntity(entity);
+	m_scene->AddEntity(ship);
 
 	m_running = success;
 
@@ -63,7 +47,7 @@ void Game::Update()
 	m_scene->Update();
 
 	Renderer::Instance()->BeginFrame();
-	Renderer::Instance()->SetColor(Color::red);
+	Renderer::Instance()->SetColor(Color::cyan);
 
 	m_scene->Draw();
 

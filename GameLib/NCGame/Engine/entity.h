@@ -3,6 +3,7 @@
 #include "object.h"
 #include "component.h"
 #include <vector>
+#include <assert.h>
 
 class ENGINE_API Entity : public Object
 {
@@ -12,6 +13,16 @@ public:
 
 	void Update();
 	void Draw();
+
+	template<typename T>
+	T* AddComponent()
+	{
+		T* component = new T(this);
+		assert(dynamic_cast<Component*>(component));
+		m_components.push_back(component);
+
+		return component;
+	}
 
 	void AddComponent(Component* component);
 	void RemoveComponent(Component* component);

@@ -37,9 +37,28 @@ void KinematicComponent::Update()
 	{
 		transform->position += m_velocity * dt;
 	}
+
+	m_velocity *= pow(m_dampening, dt);
+
+	if (m_forceType == eForceType::IMPULSE)
+	{
+		m_force = Vector2D::zero;
+	}
 }
 
 void KinematicComponent::ApplyForce(const Vector2D & force, eForceType forceType)
 {
-	m_force = force; 
+	m_forceType = forceType;
+
+	switch (m_forceType)
+	{
+	case FORCE:
+	case IMPULSE:
+		m_force = force;
+		break;
+	case VELOCITY:
+		m_force = Vector2D::zero;
+		m_velocity = force;
+		break;
+	}
 }

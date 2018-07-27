@@ -11,10 +11,9 @@
 #include "scene.h"
 #include "ship.h"
 
-
-Vector2D position(400.0f, 300.0f);
-float angle(0.0f);
-Text* text;
+//Vector2D position(400.0f, 300.0f);
+//float angle(0.0f);
+//Text* text;
 
 bool Game::Initialize()
 {
@@ -22,7 +21,7 @@ bool Game::Initialize()
 
 	m_scene = new Scene();
 
-	Ship* ship = new Ship();
+	Ship* ship = new Ship(m_scene);
 	float x = (float)(rand() % 800);
 	float y = (float)(rand() % 600);
 	ship->Create(Vector2D(x, y));

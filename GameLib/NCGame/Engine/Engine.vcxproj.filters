@@ -86,9 +86,6 @@
     <ClInclude Include="spriteComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="transformComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="texture.h">
       <Filter>Graphics</Filter>
     </ClInclude>
@@ -106,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="kinematicComponent.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +163,6 @@
     <ClCompile Include="spriteComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="transformComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="texture.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -180,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="kinematicComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -18,9 +18,10 @@ void Scene::Shutdown()
 
 void Scene::Update()
 {
-	for (Entity* entity : m_entities)
+	size_t size = m_entities.size();
+	for (size_t i = 0; i < size; i++)
 	{
-		entity->Update();
+		m_entities[i]->Update();
 	}
 }
 

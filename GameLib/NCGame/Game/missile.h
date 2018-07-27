@@ -5,8 +5,8 @@
 class Missile : public Entity
 {
 public:
-	Missile() {}
+	Missile(Scene* scene) : Entity(scene) {}
 	~Missile() {}
 
-	void Create(const Vector2D& position);
+	void Create(const Vector2D& position, const Vector2D& direction, float speed);
 };

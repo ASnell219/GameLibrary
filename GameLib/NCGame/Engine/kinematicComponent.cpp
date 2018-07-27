@@ -2,7 +2,6 @@
 #include "timer.h"
 #include "physics.h"
 #include "entity.h"
-#include "transformComponent.h"
 
 void KinematicComponent::Create(float velocityMax, float dampening, bool enableGravity)
 {
@@ -32,11 +31,13 @@ void KinematicComponent::Update()
 		m_velocity = m_velocity.Normalized() * m_velocityMax;
 	}
 
-	TransformComponent* transform = m_owner->GetComponent<TransformComponent>();
+	m_owner->GetTransform().position += (m_velocity * dt);
+
+	/*TransformComponent* transform = m_owner->GetComponent<TransformComponent>();
 	if (transform)
 	{
 		transform->position += m_velocity * dt;
-	}
+	}*/
 
 	m_velocity *= pow(m_dampening, dt);
 

@@ -26,7 +26,8 @@ bool Engine::Initialize()
 	AudioSystem::Instance()->Initialize(this);
 	TextManager::Instance()->Initialize(this);
 	Physics::Instance()->Initialize(this);
-	
+
+	Physics::Instance()->SetGravity(Vector2D(0.0f, 400.0f));
 
 	return true;
 }

@@ -1,13 +1,2 @@
-﻿  color.cpp
-  engine.cpp
-  entity.cpp
-  kinematicComponent.cpp
-  renderer.cpp
-  scene.cpp
-  spriteComponent.cpp
-  text.cpp
-  textManager.cpp
-  texture.cpp
-  textureManager.cpp
-  Generating Code...
+﻿  engine.cpp
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

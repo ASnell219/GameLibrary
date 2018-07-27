@@ -1,26 +1,19 @@
 #include "ship.h"
-#include "transformComponent.h"
 #include "spriteComponent.h"
 #include "shipControllerComponent.h"
 #include "kinematicComponent.h"
 
 void Ship::Create(const Vector2D & position)
 {
-	TransformComponent* transformComponent = AddComponent<TransformComponent>();
-	
-	transformComponent->Create(Vector2D(position));
-	this->AddComponent(transformComponent);
+	m_transform.position = position;
 
-	SpriteComponent* spriteComponent = new SpriteComponent(this);
+	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
 	spriteComponent->Create("..\\content\\ship.png");
-	this->AddComponent(spriteComponent);
 
-	ShipControllerComponent* shipControllerComponent = new ShipControllerComponent(this);
+	ShipControllerComponent* shipControllerComponent = AddComponent<ShipControllerComponent>();
 	shipControllerComponent->Create(800.0f);
-	this->AddComponent(shipControllerComponent);
 
-	KinematicComponent* kinematic = new KinematicComponent(this);
+	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.3f);
-	this->AddComponent(kinematic);
 
 }

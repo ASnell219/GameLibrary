@@ -1,9 +1,9 @@
 #include "shipControllerComponent.h"
 #include "inputManager.h"
 #include "entity.h"
-#include "transformComponent.h"
 #include "timer.h"
 #include "kinematicComponent.h"
+#include "missile.h"
 
 void ShipControllerComponent::Create(float speed)
 {
@@ -38,12 +38,10 @@ void ShipControllerComponent::Update()
 		kinematic->ApplyForce(force * m_speed, KinematicComponent::VELOCITY);
 	}
 
-
-	if ((InputManager::Instance()->GetActionButton("fire") == InputManager::eButtonState::PRESSED) ||
-		(InputManager::Instance()->GetActionButton("fire") == InputManager::eButtonState::HELD))
+	if (InputManager::Instance()->GetActionButton("fire") == InputManager::eButtonState::PRESSED)
 	{
-		//fire missile / create missile
+		Missile* missile = new Missile(m_owner->GetScene());
+		missile->Create(m_owner->GetTransform().position, Vector2D::down, 800.0f);
+		m_owner->GetScene()->AddEntity(missile);
 	}
-
-	//m_owner->GetComponent<TransformComponent>()->position += force * m_speed * Timer::Instance()->DeltaTime();
 }

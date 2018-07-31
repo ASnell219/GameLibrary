@@ -8,7 +8,7 @@ void Ship::Create(const Vector2D & position)
 	m_transform.position = position;
 
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
-	spriteComponent->Create("..\\content\\ship.png");
+	spriteComponent->Create("..\\content\\ship.png", Vector2D(0.5f, 0.0f));
 
 	ShipControllerComponent* shipControllerComponent = AddComponent<ShipControllerComponent>();
 	shipControllerComponent->Create(800.0f);

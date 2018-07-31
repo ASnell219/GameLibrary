@@ -10,11 +10,20 @@
 class ENGINE_API Entity : public Object
 {
 public:
+	enum eState
+	{
+		INACTIVE,
+		ACTIVE,
+		DESTROY
+	};
+
+public:
 	Entity(Scene* scene, const ID& id = ID()) : m_scene(scene), Object(id) {}
 	virtual ~Entity() {}
 
-	void Update();
-	void Draw();
+	virtual void Destroy();
+	virtual void Update();
+	virtual void Draw();
 
 	template<typename T>
 	T* AddComponent()
@@ -45,8 +54,12 @@ public:
 	Scene* GetScene() { return m_scene; }
 	Transform& GetTransform() { return m_transform; }
 
+	eState GetState() { return m_state; }
+	void SetState(eState state) { m_state = state; }
+
 protected:
 	Transform m_transform;
 	Scene * m_scene;
 	std::vector<Component*> m_components;
+	eState m_state = eState::ACTIVE;
 };

@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "entity.h"
 #include <assert.h>
+#include <list>
 
 bool Scene::Initialize()
 {
@@ -18,10 +19,9 @@ void Scene::Shutdown()
 
 void Scene::Update()
 {
-	size_t size = m_entities.size();
-	for (size_t i = 0; i < size; i++)
+	for (Entity* entity : m_entities)
 	{
-		m_entities[i]->Update();
+		entity->Update();
 	}
 }
 
@@ -41,7 +41,7 @@ void Scene::AddEntity(Entity * entity)
 	m_entities.push_back(entity);
 }
 
-void Scene::RemoveEntity(Entity * entity)
+void Scene::RemoveEntity(Entity * entity, bool destroy)
 {
 	assert(std::find(m_entities.begin(), m_entities.end(), entity) != m_entities.end());
 	assert(entity);
@@ -49,6 +49,11 @@ void Scene::RemoveEntity(Entity * entity)
 	auto iter = std::find(m_entities.begin(), m_entities.end(), entity);
 	if (iter != m_entities.end())
 	{
+		if (destroy)
+		{
+			(*iter)->Destroy();
+			delete *iter;
+		}
 		m_entities.erase(iter);
 	}
 }

@@ -141,6 +141,7 @@
     <ClInclude Include="controllerComponent.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="fileSystem.h" />
     <ClInclude Include="id.h" />
     <ClInclude Include="inputManager.h" />
     <ClInclude Include="kinematicComponent.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="controllerComponent.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="fileSystem.cpp" />
     <ClCompile Include="id.cpp" />
     <ClCompile Include="inputManager.cpp" />
     <ClCompile Include="kinematicComponent.cpp" />

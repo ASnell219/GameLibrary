@@ -8,17 +8,17 @@
 #include "timer.h"
 #include "textManager.h"
 #include "physics.h"
+#include "fileSystem.h"
 #include <cassert>
 #include <iostream>
 #include <SDL_ttf.h>
-
-
 
 bool Engine::Initialize()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	m_window = SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
 
+	FileSystem::Instance()->Initialize(this);
 	Timer::Instance()->Initialize(this);
 	Renderer::Instance()->Initialize(this);
 	TextureManager::Instance()->Initialize(this);
@@ -41,7 +41,7 @@ void Engine::Shutdown()
 	TextureManager::Instance()->Shutdown();
 	Renderer::Instance()->Shutdown();
 	Timer::Instance()->Shutdown();
-	
+	FileSystem::Instance()->Shutdown();
 	
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
@@ -54,6 +54,7 @@ void Engine::Update()
 	InputManager::Instance()->Update();
 	AudioSystem::Instance()->Update();
 	Physics::Instance()->Update();
+	FileSystem::Instance()->Update();
 
 	SDL_Event event;
 	SDL_PollEvent(&event);

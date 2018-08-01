@@ -11,7 +11,7 @@ public:
 	void Shutdown();
 	void Update();
 
-	void AddSound(const std::string& id, const std::string& filename);
+	void AddSound(const std::string& id, const std::string& audioname);
 	void PlaySound(const std::string& id, bool loop);
 	void RemoveSound(const std::string& id);
 

@@ -1,5 +1,6 @@
 #include "textureManager.h"
 #include "renderer.h"
+#include "fileSystem.h"
 #include <cassert>
 #include <SDL_image.h>
 
@@ -24,7 +25,8 @@ SDL_Texture * TextureManager::GetTexture(const std::string & textureName)
 	
 	if (texture == nullptr)
 	{
-		SDL_Surface* surface = IMG_Load(textureName.c_str());
+		std::string filename = FileSystem::Instance()->GetPathname() + textureName;
+		SDL_Surface* surface = IMG_Load(filename.c_str());
 		assert(surface);
 		texture = SDL_CreateTextureFromSurface(Renderer::Instance()->GetRenderer(), surface);
 		SDL_FreeSurface(surface);

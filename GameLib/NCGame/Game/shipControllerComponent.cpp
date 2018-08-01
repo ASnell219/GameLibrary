@@ -4,6 +4,7 @@
 #include "timer.h"
 #include "kinematicComponent.h"
 #include "missile.h"
+#include "audioSystem.h"
 
 void ShipControllerComponent::Create(float speed)
 {
@@ -11,6 +12,8 @@ void ShipControllerComponent::Create(float speed)
 	InputManager::Instance()->AddAction("left", SDL_SCANCODE_LEFT, InputManager::eDevice::KEYBOARD);
 	InputManager::Instance()->AddAction("right", SDL_SCANCODE_RIGHT, InputManager::eDevice::KEYBOARD);
 	InputManager::Instance()->AddAction("fire", SDL_SCANCODE_SPACE, InputManager::eDevice::KEYBOARD);
+
+	AudioSystem::Instance()->AddSound("fire", "laser.wav");
 }
 
 void ShipControllerComponent::Destroy()
@@ -43,5 +46,7 @@ void ShipControllerComponent::Update()
 		Missile* missile = new Missile(m_owner->GetScene());
 		missile->Create(m_owner->GetTransform().position, Vector2D::down, 800.0f);
 		m_owner->GetScene()->AddEntity(missile);
+
+		AudioSystem::Instance()->PlaySound("fire", false);
 	}
 }

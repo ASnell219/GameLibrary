@@ -1,15 +1,17 @@
 #include "game.h"
 #include "engine.h"
-#include "inputManager.h"
-#include "audioSystem.h"
-#include "textManager.h"
-#include "matrix22.h"
+//#include "inputManager.h"
+//#include "audioSystem.h"
+//#include "textManager.h"
+//#include "matrix22.h"
 #include "renderer.h"
-#include "textureManager.h"
-#include "timer.h"
-#include "entity.h"
+//#include "textureManager.h"
+//#include "timer.h"
+//#include "entity.h"
 #include "scene.h"
 #include "ship.h"
+#include "fileSystem.h"
+#include "enemy.h"
 
 //Vector2D position(400.0f, 300.0f);
 //float angle(0.0f);
@@ -18,15 +20,17 @@
 bool Game::Initialize()
 {
 	bool success = m_engine->Initialize();
+	FileSystem::Instance()->SetPathname("..\\content\\galaga\\");
 
 	m_scene = new Scene();
 
 	Ship* ship = new Ship(m_scene);
-	float x = (float)(rand() % 800);
-	float y = (float)(rand() % 600);
-	ship->Create(Vector2D(x, y));
-
+	ship->Create(Vector2D(400, 510));
 	m_scene->AddEntity(ship);
+
+	Enemy* enemy = new Enemy(m_scene);
+	enemy->Create(Vector2D(400, 20));
+	m_scene->AddEntity(enemy);
 
 	m_running = success;
 

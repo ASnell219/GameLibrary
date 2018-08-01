@@ -1,4 +1,5 @@
 #include "audioSystem.h"
+#include "fileSystem.h"
 #include <assert.h>
 
 bool AudioSystem::Initialize(Engine * engine)
@@ -30,11 +31,12 @@ void AudioSystem::Update()
 	assert(result == FMOD_OK);
 }
 
-void AudioSystem::AddSound(const std::string & id, const std::string & filename)
+void AudioSystem::AddSound(const std::string & id, const std::string & audioname)
 {
 	assert(m_sounds.find(id) == m_sounds.end());
 
 	FMOD::Sound* fmodSound = nullptr;
+	std::string filename = FileSystem::Instance()->GetPathname() + audioname;
 	FMOD_RESULT result = m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, 0, &fmodSound);
 	if (result == FMOD_OK)
 	{

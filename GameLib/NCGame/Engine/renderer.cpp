@@ -53,3 +53,11 @@ void Renderer::DrawTexture(Texture * texture, const Vector2D & position, const V
 {
 	DrawTexture(texture->m_sdlTexture, position, scale, angle);
 }
+
+Vector2D Renderer::GetSize()
+{
+	SDL_Point size;
+	SDL_GetRendererOutputSize(m_renderer, &size.x, &size.y);
+
+	return size;
+}

@@ -9,4 +9,5 @@ public:
 	~Ship(){}
 
 	void Create(const Vector2D& position);
+	void Update();
 };

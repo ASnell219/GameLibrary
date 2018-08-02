@@ -1,6 +1,8 @@
 #include "enemy.h"
 #include "spriteComponent.h"
 #include "kinematicComponent.h"
+#include "enemyControllerComponent.h"
+#include "renderer.h"
 
 void Enemy::Create(const Vector2D & position)
 {
@@ -10,8 +12,8 @@ void Enemy::Create(const Vector2D & position)
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
 	spriteComponent->Create("enemy01A.png", Vector2D(0.5f, 0.5f));
 
-	//ShipControllerComponent* shipControllerComponent = AddComponent<ShipControllerComponent>();
-	//shipControllerComponent->Create(800.0f);
+	EnemyControllerComponent* enemyControllerComponent = AddComponent<EnemyControllerComponent>();
+	enemyControllerComponent->Create(100.0f);
 
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.3f);
@@ -22,6 +24,13 @@ void Enemy::Update()
 {
 	Entity::Update();
 
+	Vector2D size = Renderer::Instance()->GetSize();
+	if (m_transform.position.y > size.y + 64.0f)
+	{
+		float x = Math::GetRandomRange(0.0f, size.x);
+		float y = -100.0f;
+		m_transform.position = Vector2D(x, y);
+	}
 
 }
 

@@ -31,6 +31,9 @@
     <ClCompile Include="enemy.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="enemyControllerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -47,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="enemy.h">
       <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="enemyControllerComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

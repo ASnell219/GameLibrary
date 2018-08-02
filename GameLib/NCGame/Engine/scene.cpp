@@ -23,6 +23,19 @@ void Scene::Update()
 	{
 		entity->Update();
 	}
+
+	std::list<Entity*>::iterator iter = m_entities.begin();
+	while (iter != m_entities.end())
+	{
+		if ((*iter)->GetState() == Entity::DESTROY)
+		{
+			iter = RemoveEntity(*iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
 }
 
 void Scene::Draw()
@@ -41,7 +54,7 @@ void Scene::AddEntity(Entity * entity)
 	m_entities.push_back(entity);
 }
 
-void Scene::RemoveEntity(Entity * entity, bool destroy)
+std::list<Entity*>::iterator Scene::RemoveEntity(Entity * entity, bool destroy)
 {
 	assert(std::find(m_entities.begin(), m_entities.end(), entity) != m_entities.end());
 	assert(entity);
@@ -54,8 +67,10 @@ void Scene::RemoveEntity(Entity * entity, bool destroy)
 			(*iter)->Destroy();
 			delete *iter;
 		}
-		m_entities.erase(iter);
+		iter = m_entities.erase(iter);
 	}
+
+	return iter;
 }
 
 Entity * Scene::FindEntity(const ID & id)
@@ -70,4 +85,19 @@ Entity * Scene::FindEntity(const ID & id)
 		}
 	}
 	return entity;
+}
+
+std::vector<Entity*> Scene::GetEntityTag(const ID & tag)
+{
+	std::vector<Entity*> entities;
+
+	for (Entity* entity : m_entities)
+	{
+		if (entity->GetTag() == tag)
+		{
+			entities.push_back(entity);
+		}
+	}
+
+	return entities;
 }

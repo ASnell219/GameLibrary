@@ -28,10 +28,13 @@ bool Game::Initialize()
 	ship->Create(Vector2D(400, 510));
 	m_scene->AddEntity(ship);
 
-	Enemy* enemy = new Enemy(m_scene);
-	enemy->Create(Vector2D(400, 20));
-	m_scene->AddEntity(enemy);
-
+	for (size_t i = 0; i < 8; i++)
+	{
+		Enemy* enemy = new Enemy(m_scene);
+		enemy->Create(Vector2D(400, 20));
+		m_scene->AddEntity(enemy);
+	}
+	
 	m_running = success;
 
 	return success;

@@ -1,9 +1,13 @@
 #include "missile.h"
 #include "kinematicComponent.h"
 #include "spriteComponent.h"
+#include "timer.h"
 
 void Missile::Create(const Vector2D & position, const Vector2D& direction, float speed)
 {
+	m_lifetime = 2.0f;
+	SetTag("playermissile");
+
 	m_transform.position = position;
 	m_transform.scale = Vector2D(2.0f, 2.0f);
 
@@ -13,4 +17,15 @@ void Missile::Create(const Vector2D & position, const Vector2D& direction, float
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.9f);
 	kinematic->ApplyForce(direction * speed, KinematicComponent::VELOCITY);
+}
+
+void Missile::Update()
+{
+	Entity::Update();
+	m_lifetime -= Timer::Instance()->DeltaTime();
+	if (m_lifetime <= 0.0f)
+	{
+		SetState(Entity::DESTROY);
+	}
+
 }

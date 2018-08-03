@@ -3,6 +3,7 @@
 #include "shipControllerComponent.h"
 #include "kinematicComponent.h"
 #include "renderer.h"
+#include "aabbComponent.h"
 
 void Ship::Create(const Vector2D & position)
 {
@@ -17,6 +18,9 @@ void Ship::Create(const Vector2D & position)
 
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.3f);
+
+	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
+	aabbComponent->Create();
 
 }
 

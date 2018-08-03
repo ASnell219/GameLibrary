@@ -12,6 +12,8 @@ public:
 	virtual void Destroy() = 0;
 	virtual void Update() = 0;
 
+	Entity* GetOwner() { return m_owner; }
+
 protected:
 	Entity * m_owner = nullptr;
 };

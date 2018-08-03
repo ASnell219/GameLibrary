@@ -2,6 +2,7 @@
 #include "kinematicComponent.h"
 #include "spriteComponent.h"
 #include "timer.h"
+#include "aabbComponent.h"
 
 void Missile::Create(const Vector2D & position, const Vector2D& direction, float speed)
 {
@@ -17,6 +18,9 @@ void Missile::Create(const Vector2D & position, const Vector2D& direction, float
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.9f);
 	kinematic->ApplyForce(direction * speed, KinematicComponent::VELOCITY);
+
+	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
+	aabbComponent->Create();
 }
 
 void Missile::Update()

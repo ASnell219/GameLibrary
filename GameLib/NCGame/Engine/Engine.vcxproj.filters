@@ -21,6 +21,9 @@
     <Filter Include="Components">
       <UniqueIdentifier>{48d02dbc-1cc5-432f-bd5d-e97641f236d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{0e2353cc-bd3d-4a14-b905-c60479597adf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="singleton.h">
@@ -98,9 +101,6 @@
     <ClInclude Include="physicsComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="physics.h">
-      <Filter>Systems</Filter>
-    </ClInclude>
     <ClInclude Include="kinematicComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -109,6 +109,18 @@
     </ClInclude>
     <ClInclude Include="fileSystem.h">
       <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="collisionComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="aabb.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="aabbComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +187,6 @@
     <ClCompile Include="controllerComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="physics.cpp">
-      <Filter>Systems</Filter>
-    </ClCompile>
     <ClCompile Include="kinematicComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -186,6 +195,15 @@
     </ClCompile>
     <ClCompile Include="fileSystem.cpp">
       <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="aabb.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="aabbComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

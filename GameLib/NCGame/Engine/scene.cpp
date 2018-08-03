@@ -1,5 +1,6 @@
 #include "scene.h"
 #include "entity.h"
+#include "collisionComponent.h"
 #include <assert.h>
 #include <list>
 
@@ -22,6 +23,28 @@ void Scene::Update()
 	for (Entity* entity : m_entities)
 	{
 		entity->Update();
+	}
+
+	std::vector<ICollisionComponent*> collisionComponents;
+	for (Entity* entity : m_entities)
+	{
+		ICollisionComponent* collisionComponent = entity->GetComponent<ICollisionComponent>();
+		if (collisionComponent)
+		{
+			collisionComponents.push_back(collisionComponent);
+		}
+	}
+
+	for (size_t i = 0; i < collisionComponents.size(); i++)
+	{
+		for (size_t j = i + 1; j < collisionComponents.size(); j++)
+		{
+			if (collisionComponents[i]->Intersects(collisionComponents[j]))
+			{
+				collisionComponents[i]->GetOwner()->SetState(Entity::DESTROY);
+				collisionComponents[j]->GetOwner()->SetState(Entity::DESTROY);
+			}
+		}
 	}
 
 	std::list<Entity*>::iterator iter = m_entities.begin();

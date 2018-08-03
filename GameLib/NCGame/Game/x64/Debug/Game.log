@@ -1,4 +1,8 @@
-﻿  enemyControllerComponent.cpp
+﻿  enemy.cpp
+  enemyControllerComponent.cpp
   game.cpp
+  missile.cpp
+  ship.cpp
+  shipControllerComponent.cpp
   Generating Code...
   Game.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Game.exe

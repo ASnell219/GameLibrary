@@ -1,21 +1,11 @@
 #include "game.h"
 #include "engine.h"
-//#include "inputManager.h"
-//#include "audioSystem.h"
-//#include "textManager.h"
-//#include "matrix22.h"
 #include "renderer.h"
-//#include "textureManager.h"
-//#include "timer.h"
-//#include "entity.h"
 #include "scene.h"
 #include "ship.h"
 #include "fileSystem.h"
 #include "enemy.h"
 
-//Vector2D position(400.0f, 300.0f);
-//float angle(0.0f);
-//Text* text;
 
 bool Game::Initialize()
 {
@@ -24,14 +14,16 @@ bool Game::Initialize()
 
 	m_scene = new Scene();
 
-	Ship* ship = new Ship(m_scene);
+	Ship* ship = new Ship(m_scene, "player");
 	ship->Create(Vector2D(400, 510));
 	m_scene->AddEntity(ship);
 
-	for (size_t i = 0; i < 8; i++)
+	for (size_t i = 0; i < 10; i++)
 	{
 		Enemy* enemy = new Enemy(m_scene);
-		enemy->Create(Vector2D(400, 20));
+		float x = (float)(rand() % 800);
+		//float y = (float)(rand() % 600);
+		enemy->Create(Vector2D(x, -40.0f));
 		m_scene->AddEntity(enemy);
 	}
 	
@@ -50,11 +42,10 @@ void Game::Update()
 	m_running = !m_engine->IsQuit();
 	m_engine->Update();
 
-	m_scene->Update();
-
-	Renderer::Instance()->BeginFrame();
 	Renderer::Instance()->SetColor(Color::cyan);
-
+	Renderer::Instance()->BeginFrame();
+	
+	m_scene->Update();
 	m_scene->Draw();
 
 	Renderer::Instance()->EndFrame();

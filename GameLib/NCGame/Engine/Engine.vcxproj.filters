@@ -24,6 +24,9 @@
     <Filter Include="Physics">
       <UniqueIdentifier>{0e2353cc-bd3d-4a14-b905-c60479597adf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{cf1f35a3-e409-4c6b-bc7b-b159ec5aae9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="singleton.h">
@@ -122,6 +125,12 @@
     <ClInclude Include="aabbComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="eventManager.h">
+      <Filter>Event</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -204,6 +213,9 @@
     </ClCompile>
     <ClCompile Include="aabbComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="eventManager.cpp">
+      <Filter>Event</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

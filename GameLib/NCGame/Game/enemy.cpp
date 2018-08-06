@@ -7,6 +7,8 @@
 
 void Enemy::Create(const Vector2D & position)
 {
+	SetTag("enemy");
+
 	m_transform.position = position;
 	m_transform.scale = Vector2D(2.0f, 2.0f);
 
@@ -14,15 +16,13 @@ void Enemy::Create(const Vector2D & position)
 	kinematic->Create(500.0f, 0.3f);
 
 	EnemyControllerComponent* enemyControllerComponent = AddComponent<EnemyControllerComponent>();
-	enemyControllerComponent->Create(100.0f);
+	enemyControllerComponent->Create(150.0f);
 
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
 	spriteComponent->Create("enemy01A.png", Vector2D(0.5f, 0.5f));
 
 	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
 	aabbComponent->Create();
-
-
 
 }
 
@@ -38,5 +38,16 @@ void Enemy::Update()
 		m_transform.position = Vector2D(x, y);
 	}
 
+}
+
+void Enemy::OnEvent(const Event & event)
+{
+	if (event.eventID == "collision")
+	{
+		if (event.sender->GetTag() == "playermissile" || event.sender->GetTag() == "player")
+		{
+			SetState(Entity::DESTROY);
+		}
+	}
 }
 

@@ -7,6 +7,8 @@
 
 void Ship::Create(const Vector2D & position)
 {
+	SetTag("player");
+
 	m_transform.position = position;
 	m_transform.scale = Vector2D(3.0f, 3.0f);
 
@@ -30,4 +32,15 @@ void Ship::Update()
 
 	Vector2D size = Renderer::Instance()->GetSize();
 	m_transform.position.x = Math::Clamp(m_transform.position.x, 0.0f, size.x);
+}
+
+void Ship::OnEvent(const Event & event)
+{
+	if (event.eventID == "collision")
+	{
+		if (event.sender->GetTag() == "enemy")
+		{
+			SetState(Entity::DESTROY);
+		}
+	}
 }

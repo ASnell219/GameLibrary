@@ -22,10 +22,11 @@ void AABBComponent::Update()
 	if (spriteComponent)
 	{
 		size = size * spriteComponent->GetTexture()->GetSize();
-		position = position - (size * spriteComponent->GetOrigin());
+		position += (size) * (Vector2D(0.5f, 0.5f) - spriteComponent->GetOrigin());
 	}
 
 	m_aabb.Build(position, size* 0.5f);
+	m_aabb.Draw(Color::red);
 }
 
 bool AABBComponent::Intersects(ICollisionComponent * other)
@@ -38,5 +39,5 @@ bool AABBComponent::Intersects(ICollisionComponent * other)
 		intersects = m_aabb.Intersects(aabbComponent->m_aabb);
 	}
 
-	return false;
+	return intersects;
 }

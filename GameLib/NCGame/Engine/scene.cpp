@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "entity.h"
 #include "collisionComponent.h"
+#include "eventManager.h"
 #include <assert.h>
 #include <list>
 
@@ -41,8 +42,16 @@ void Scene::Update()
 		{
 			if (collisionComponents[i]->Intersects(collisionComponents[j]))
 			{
-				collisionComponents[i]->GetOwner()->SetState(Entity::DESTROY);
-				collisionComponents[j]->GetOwner()->SetState(Entity::DESTROY);
+				Event event;
+				event.eventID = "collision";
+
+				event.receiver = collisionComponents[i]->GetOwner();
+				event.sender = collisionComponents[j]->GetOwner();
+				EventManager::Instance()->SendMessage(event);
+
+				event.receiver = collisionComponents[j]->GetOwner();
+				event.sender = collisionComponents[i]->GetOwner();
+				EventManager::Instance()->SendMessage(event);
 			}
 		}
 	}

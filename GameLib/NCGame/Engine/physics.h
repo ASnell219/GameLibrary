@@ -14,6 +14,7 @@ public:
 	void SetGravity(const Vector2D& gravity) { m_gravity = gravity; }
 	const Vector2D& GetGravity() { return m_gravity; }
 
+protected:
 	friend Singleton<Physics>;
 
 protected:

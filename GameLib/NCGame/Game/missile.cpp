@@ -33,3 +33,14 @@ void Missile::Update()
 	}
 
 }
+
+void Missile::OnEvent(const Event & event)
+{
+	if (event.eventID == "collision")
+	{
+		if (event.sender->GetTag() == "enemy")
+		{
+			SetState(Entity::DESTROY);
+		}
+	}
+}

@@ -45,7 +45,7 @@ void ShipControllerComponent::Update()
 	{
 		std::vector<Entity*> missiles = m_owner->GetScene()->GetEntityTag("playermissile");
 
-		if (missiles.size() < 2)
+		if (missiles.size() < 10)
 		{
 			Missile* missile = new Missile(m_owner->GetScene());
 			missile->Create(m_owner->GetTransform().position, Vector2D::down, 800.0f);

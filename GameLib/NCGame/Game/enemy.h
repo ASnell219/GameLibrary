@@ -12,4 +12,6 @@ public:
 	void Create(const Vector2D& position);
 	void Update();
 
+	void OnEvent(const Event& event);
+
 };

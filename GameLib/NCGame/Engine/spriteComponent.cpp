@@ -23,7 +23,10 @@ void SpriteComponent::Update()
 
 void SpriteComponent::Draw()
 {
-	Transform transform = m_owner->GetTransform();
-	m_texture->Draw(transform.position, m_origin, transform.scale, transform.rotation);
-	//Renderer::Instance()->DrawTexture(m_texture, m_owner->GetTransform().position, m_owner->GetTransform().scale, m_owner->GetTransform().rotation);
+	if (m_visible)
+	{
+		Transform transform = m_owner->GetTransform();
+		m_texture->Draw(transform.position, m_origin, transform.scale, transform.rotation);
+	}
 }
+

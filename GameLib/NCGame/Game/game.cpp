@@ -5,7 +5,8 @@
 #include "ship.h"
 #include "fileSystem.h"
 #include "enemy.h"
-
+#include "spriteComponent.h"
+#include "textComponent.h"
 
 bool Game::Initialize()
 {
@@ -14,11 +15,25 @@ bool Game::Initialize()
 
 	m_scene = new Scene();
 
+	//Entity* entity = new Entity(m_scene);
+	//entity->GetTransform().position = Vector2D(400.0f, 300.0f);
+	//SpriteComponent* spriteComponent = entity->AddComponent<SpriteComponent>();
+	//spriteComponent->Create("galaga.png", Vector2D(0.5f, 0.5f));
+	//spriteComponent->SetDepth(100);
+	//m_scene->AddEntity(entity);
+
+	Entity* entity = new Entity(m_scene);
+	entity->GetTransform().position = Vector2D(400.0f, 300.0f);
+	TextComponent* text = entity->AddComponent<TextComponent>();
+	text->Create("Hello", "emulogic.ttf", 12, Color::white);
+	//spriteComponent->SetDepth(100);
+	m_scene->AddEntity(entity);
+
 	Ship* ship = new Ship(m_scene, "player");
 	ship->Create(Vector2D(400, 510));
 	m_scene->AddEntity(ship);
 
-	for (size_t i = 0; i < 10; i++)
+	for (size_t i = 0; i < 5; i++)
 	{
 		Enemy* enemy = new Enemy(m_scene);
 		float x = (float)(rand() % 800);

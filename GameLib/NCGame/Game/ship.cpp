@@ -38,7 +38,7 @@ void Ship::OnEvent(const Event & event)
 {
 	if (event.eventID == "collision")
 	{
-		if (event.sender->GetTag() == "enemy")
+		if (event.sender->GetTag() == "enemy" || event.sender->GetTag() == "enemymissile")
 		{
 			SetState(Entity::DESTROY);
 		}

@@ -16,7 +16,7 @@ void Enemy::Create(const Vector2D & position)
 	kinematic->Create(500.0f, 0.3f);
 
 	EnemyControllerComponent* enemyControllerComponent = AddComponent<EnemyControllerComponent>();
-	enemyControllerComponent->Create(150.0f);
+	enemyControllerComponent->Create(200.0f);
 
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
 	spriteComponent->Create("enemy01A.png", Vector2D(0.5f, 0.5f));

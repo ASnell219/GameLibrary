@@ -4,16 +4,18 @@
 #include "timer.h"
 #include "aabbComponent.h"
 
-void Missile::Create(const Vector2D & position, const Vector2D& direction, float speed)
+void Missile::Create(const ID& tag, const Vector2D & position, const Vector2D& direction, float speed)
 {
 	m_lifetime = 2.0f;
-	SetTag("playermissile");
+	SetTag(tag);
+	
 
 	m_transform.position = position;
 	m_transform.scale = Vector2D(2.0f, 2.0f);
 
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
-	spriteComponent->Create("missile01.png", Vector2D(0.5f, 0.5f));
+	if (tag == "playermissile") spriteComponent->Create("missile01.png", Vector2D(0.5f, 0.5f));
+	else if (tag == "enemymissile") spriteComponent->Create("missile02.png", Vector2D(0.5f, 0.5f));
 
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.9f);
@@ -38,7 +40,7 @@ void Missile::OnEvent(const Event & event)
 {
 	if (event.eventID == "collision")
 	{
-		if (event.sender->GetTag() == "enemy")
+		if (event.sender->GetTag() == "enemy" && m_tag == "playermissile")
 		{
 			SetState(Entity::DESTROY);
 		}

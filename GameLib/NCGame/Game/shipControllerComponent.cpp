@@ -48,7 +48,7 @@ void ShipControllerComponent::Update()
 		if (missiles.size() < 10)
 		{
 			Missile* missile = new Missile(m_owner->GetScene());
-			missile->Create(m_owner->GetTransform().position, Vector2D::down, 800.0f);
+			missile->Create("playermissile", m_owner->GetTransform().position, Vector2D::down, 800.0f);
 			m_owner->GetScene()->AddEntity(missile);
 
 			AudioSystem::Instance()->PlaySound("fire", false);

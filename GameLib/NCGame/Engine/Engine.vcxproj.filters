@@ -131,6 +131,9 @@
     <ClInclude Include="eventManager.h">
       <Filter>Event</Filter>
     </ClInclude>
+    <ClInclude Include="textComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -216,6 +219,9 @@
     </ClCompile>
     <ClCompile Include="eventManager.cpp">
       <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="textComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

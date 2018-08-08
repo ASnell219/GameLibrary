@@ -10,6 +10,7 @@ public:
 	~Texture();
 
 	bool Create(const std::string& textureName);
+	bool CreateFromSurface(SDL_Surface* surface);
 	void Destroy();
 
 	void Draw(const Vector2D& position, const Vector2D& origin = Vector2D::zero, const Vector2D& scale = Vector2D::one, float angle = 0);

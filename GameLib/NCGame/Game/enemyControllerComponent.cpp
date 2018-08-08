@@ -1,10 +1,14 @@
 #include "enemyControllerComponent.h"
 #include "entity.h"
 #include "kinematicComponent.h"
+#include "timer.h"
+#include "missile.h"
+#include "math.h"
 
 void EnemyControllerComponent::Create(float speed)
 {
 	m_speed = speed;
+	m_timer = Math::GetRandomRange(m_fireRateMin, m_fireRateMax);
 }
 
 void EnemyControllerComponent::Destroy()
@@ -28,4 +32,15 @@ void EnemyControllerComponent::Update()
 	{
 		kinematic->ApplyForce(force * m_speed, KinematicComponent::VELOCITY);
 	}
+
+	m_timer -= Timer::Instance()->DeltaTime();
+
+	if (m_timer <= 0.0f)
+	{
+		m_timer = Math::GetRandomRange(m_fireRateMin, m_fireRateMax);
+		Missile* missile = new Missile(m_owner->GetScene());
+		missile->Create("enemymissile", m_owner->GetTransform().position, Vector2D::up, 600.0f);
+		m_owner->GetScene()->AddEntity(missile);
+	}
+	
 }

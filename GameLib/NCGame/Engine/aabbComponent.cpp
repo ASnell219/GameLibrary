@@ -26,7 +26,7 @@ void AABBComponent::Update()
 	}
 
 	m_aabb.Build(position, size* 0.5f);
-	m_aabb.Draw(Color::red);
+	//m_aabb.Draw(Color::red);
 }
 
 bool AABBComponent::Intersects(ICollisionComponent * other)

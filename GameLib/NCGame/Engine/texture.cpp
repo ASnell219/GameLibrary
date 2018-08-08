@@ -25,6 +25,13 @@ bool Texture::Create(const std::string& textureName)
 	return true;
 }
 
+bool Texture::CreateFromSurface(SDL_Surface * surface)
+{
+	m_sdlTexture = SDL_CreateTextureFromSurface(Renderer::Instance()->GetRenderer(), surface);
+
+	return true;
+}
+
 void Texture::Destroy()
 {
 	if (m_sdlTexture)

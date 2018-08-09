@@ -146,6 +146,7 @@
     <ClInclude Include="entity.h" />
     <ClInclude Include="event.h" />
     <ClInclude Include="eventManager.h" />
+    <ClInclude Include="eventReceiver.h" />
     <ClInclude Include="fileSystem.h" />
     <ClInclude Include="id.h" />
     <ClInclude Include="inputManager.h" />

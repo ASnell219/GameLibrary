@@ -4,6 +4,8 @@
 #include "enemyControllerComponent.h"
 #include "renderer.h"
 #include "aabbComponent.h"
+#include "audioSystem.h"
+#include "eventManager.h"
 
 void Enemy::Create(const Vector2D & position)
 {
@@ -24,6 +26,7 @@ void Enemy::Create(const Vector2D & position)
 	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
 	aabbComponent->Create();
 
+	AudioSystem::Instance()->AddSound("explosion", "enemy-hit01.wav");
 }
 
 void Enemy::Update()
@@ -46,6 +49,10 @@ void Enemy::OnEvent(const Event & event)
 	{
 		if (event.sender->GetTag() == "playermissile" || event.sender->GetTag() == "player")
 		{
+			Event _event;
+			_event.eventID = "add_score";
+			EventManager::Instance()->SendGameMessage(_event);
+			AudioSystem::Instance()->PlaySound("explosion", false);
 			SetState(Entity::DESTROY);
 		}
 	}

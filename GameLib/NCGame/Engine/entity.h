@@ -5,10 +5,11 @@
 #include "scene.h"
 #include "transform.h"
 #include "event.h"
+#include "eventReceiver.h"
 #include <vector>
 #include <assert.h>
 
-class ENGINE_API Entity : public Object
+class ENGINE_API Entity : public Object, public EventReceiver
 {
 public:
 	enum eState

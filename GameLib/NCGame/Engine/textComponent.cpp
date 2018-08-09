@@ -23,3 +23,13 @@ void TextComponent::Draw()
 	Transform transform = m_owner->GetTransform();
 	m_text->Draw(transform.position, m_origin, transform.scale, transform.rotation);
 }
+
+void TextComponent::SetText(const std::string & text)
+{
+	m_text->SetText(text);
+}
+
+void TextComponent::SetColor(const Color & color)
+{
+	m_text->SetColor(color);
+}

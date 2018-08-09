@@ -7,11 +7,14 @@
 #include "enemy.h"
 #include "spriteComponent.h"
 #include "textComponent.h"
+#include "eventManager.h"
 
 bool Game::Initialize()
 {
 	bool success = m_engine->Initialize();
 	FileSystem::Instance()->SetPathname("..\\content\\galaga\\");
+
+	EventManager::Instance()->SetReceiver(this);
 
 	m_scene = new Scene();
 
@@ -22,11 +25,11 @@ bool Game::Initialize()
 	//spriteComponent->SetDepth(100);
 	//m_scene->AddEntity(entity);
 
-	Entity* entity = new Entity(m_scene);
-	entity->GetTransform().position = Vector2D(400.0f, 300.0f);
+	Entity* entity = new Entity(m_scene, "score");
+	entity->GetTransform().position = Vector2D(20.0f, 15.0f);
 	TextComponent* text = entity->AddComponent<TextComponent>();
-	text->Create("Hello", "emulogic.ttf", 12, Color::white);
-	//spriteComponent->SetDepth(100);
+	text->Create("000000", "emulogic.ttf", 18, Color::white);
+	text->SetDepth(100);
 	m_scene->AddEntity(entity);
 
 	Ship* ship = new Ship(m_scene, "player");
@@ -57,6 +60,15 @@ void Game::Update()
 	m_running = !m_engine->IsQuit();
 	m_engine->Update();
 
+	Entity* scoreEntity = m_scene->FindEntity("score");
+	if (scoreEntity)
+	{
+		TextComponent* text = scoreEntity->GetComponent<TextComponent>();
+		std::string score = std::to_string(m_score);
+		while (score.length() < 5) score = "0" + score;
+		text->SetText(score);
+	}
+
 	Renderer::Instance()->SetColor(Color::cyan);
 	Renderer::Instance()->BeginFrame();
 	
@@ -64,6 +76,14 @@ void Game::Update()
 	m_scene->Draw();
 
 	Renderer::Instance()->EndFrame();
+}
+
+void Game::OnEvent(const Event & event)
+{
+	if (event.eventID == "add_score")
+	{
+		m_score += 100;
+	}
 }
 
 

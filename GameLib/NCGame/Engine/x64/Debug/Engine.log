@@ -1,5 +1,2 @@
-﻿  eventManager.cpp
-  scene.cpp
-  Generating Code...
-     Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.exp
+﻿  animationComponent.cpp
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

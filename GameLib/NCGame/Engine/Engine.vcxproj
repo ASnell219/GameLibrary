@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="aabb.h" />
     <ClInclude Include="aabbComponent.h" />
+    <ClInclude Include="animationComponent.h" />
     <ClInclude Include="audioSystem.h" />
     <ClInclude Include="collisionComponent.h" />
     <ClInclude Include="color.h" />
@@ -175,6 +176,7 @@
   <ItemGroup>
     <ClCompile Include="aabb.cpp" />
     <ClCompile Include="aabbComponent.cpp" />
+    <ClCompile Include="animationComponent.cpp" />
     <ClCompile Include="audioSystem.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="controllerComponent.cpp" />

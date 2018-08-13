@@ -22,7 +22,7 @@ void Missile::Create(const ID& tag, const Vector2D & position, const Vector2D& d
 	kinematic->ApplyForce(direction * speed, KinematicComponent::VELOCITY);
 
 	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
-	aabbComponent->Create();
+	aabbComponent->Create(Vector2D(0.5f, 0.8f));
 }
 
 void Missile::Update()

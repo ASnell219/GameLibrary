@@ -6,6 +6,7 @@
 #include "aabbComponent.h"
 #include "audioSystem.h"
 #include "eventManager.h"
+#include "enemyExplosion.h"
 
 void Enemy::Create(const Vector2D & position)
 {
@@ -24,9 +25,8 @@ void Enemy::Create(const Vector2D & position)
 	spriteComponent->Create("enemy01A.png", Vector2D(0.5f, 0.5f));
 
 	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
-	aabbComponent->Create();
+	aabbComponent->Create(Vector2D(0.7f, 0.9f));
 
-	AudioSystem::Instance()->AddSound("explosion", "enemy-hit01.wav");
 }
 
 void Enemy::Update()
@@ -52,7 +52,10 @@ void Enemy::OnEvent(const Event & event)
 			Event _event;
 			_event.eventID = "add_score";
 			EventManager::Instance()->SendGameMessage(_event);
-			AudioSystem::Instance()->PlaySound("explosion", false);
+
+			EnemyExplosion* explosion = m_scene->AddEntity<EnemyExplosion>();
+			explosion->Create(m_transform.position);
+
 			SetState(Entity::DESTROY);
 		}
 	}

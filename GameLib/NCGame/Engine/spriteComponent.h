@@ -23,7 +23,7 @@ public:
 	const Vector2D& GetOrigin() { return m_origin; }
 
 protected:
-	Texture* m_texture;
+	Texture* m_texture = nullptr;
 	Vector2D m_origin; 
 	Vector2D m_uv1;
 	Vector2D m_uv2;

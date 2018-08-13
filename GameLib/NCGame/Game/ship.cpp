@@ -22,7 +22,7 @@ void Ship::Create(const Vector2D & position)
 	kinematic->Create(500.0f, 0.3f);
 
 	AABBComponent* aabbComponent = AddComponent<AABBComponent>();
-	aabbComponent->Create();
+	aabbComponent->Create(Vector2D(0.8f, 1.0f));
 
 }
 

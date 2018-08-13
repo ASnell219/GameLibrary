@@ -4,7 +4,7 @@
 #include "spriteComponent.h"
 #include "entity.h"
 
-void AnimationComponent::Create(const std::vector<std::string>& textureNames, float rate)
+void AnimationComponent::Create(const std::vector<std::string>& textureNames, float rate, ePlayback playback)
 {
 	for (std::string textureName : textureNames)
 	{
@@ -15,6 +15,7 @@ void AnimationComponent::Create(const std::vector<std::string>& textureNames, fl
 	}
 
 	m_rate = rate;
+	m_playback = playback;
 }
 
 void AnimationComponent::Update()
@@ -23,10 +24,25 @@ void AnimationComponent::Update()
 	if (m_timer >= m_rate)
 	{
 		m_timer -= m_rate;
-		m_frame++;
-		if (m_frame >= m_textures.size())
+		m_frame += m_direction;
+		if (m_frame >= m_textures.size() || m_frame < 0)
 		{
-			m_frame = 0;
+			switch (m_playback)
+			{
+			case ePlayback::LOOP:
+				m_frame = 0;
+				break;
+			case ePlayback::ONE_TIME:
+				m_frame = (int)m_textures.size() - 1;
+				break;
+			case ePlayback::ONE_TIME_DESTROY:
+				m_frame = (int)m_textures.size() - 1;
+				m_owner->SetState(Entity::DESTROY);
+				break;
+			case ePlayback::PING_PONG:
+				m_direction = -m_direction;
+				break;
+			}	
 		}
 	}
 

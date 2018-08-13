@@ -18,11 +18,6 @@ bool Texture::Create(const std::string& textureName)
 	m_sdlTexture = TextureManager::Instance()->GetTexture(textureName);
 	assert(m_sdlTexture);
 
-	/*SDL_Surface* surface = IMG_Load(textureName.c_str());
-	assert(surface);
-	m_sdlTexture = SDL_CreateTextureFromSurface(Renderer::Instance()->GetRenderer(), surface);
-	SDL_FreeSurface(surface);
-	*/
 	return (m_sdlTexture);
 }
 
@@ -36,11 +31,11 @@ bool Texture::CreateFromSurface(SDL_Surface * surface)
 
 void Texture::Destroy()
 {
-	if (m_sdlTexture)
-	{
-		SDL_DestroyTexture(m_sdlTexture);
-		m_sdlTexture = nullptr;
-	}
+	//if (m_sdlTexture)
+	//{
+	//	SDL_DestroyTexture(m_sdlTexture);
+	//	m_sdlTexture = nullptr;
+	//}
 }
 
 Vector2D Texture::GetSize() const

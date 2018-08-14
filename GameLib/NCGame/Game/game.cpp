@@ -9,6 +9,8 @@
 #include "textComponent.h"
 #include "eventManager.h"
 #include "animationComponent.h"
+#include "stateMachine.h"
+#include "states.h"
 
 bool Game::Initialize()
 {
@@ -18,14 +20,12 @@ bool Game::Initialize()
 	EventManager::Instance()->SetReceiver(this);
 
 	m_scene = new Scene();
+	m_state = new StateMachine(m_scene);
 
-	//Entity* entity = new Entity(m_scene);
-	//entity->GetTransform().position = Vector2D(400.0f, 300.0f);
-	//SpriteComponent* spriteComponent = entity->AddComponent<SpriteComponent>();
-	//spriteComponent->Create("galaga.png", Vector2D(0.5f, 0.5f));
-	//spriteComponent->SetDepth(100);
-	//m_scene->AddEntity(entity);
+	m_state->AddState("title", new TitleState(m_state));
+	m_state->AddState("game", new GameState(m_state));
 
+	m_state->SetState("title");
 
 	Entity* entity = new Entity(m_scene, "score");
 	entity->GetTransform().position = Vector2D(20.0f, 15.0f);
@@ -37,15 +37,6 @@ bool Game::Initialize()
 	Ship* ship = new Ship(m_scene, "player");
 	ship->Create(Vector2D(400, 510));
 	m_scene->AddEntity(ship);
-
-	for (size_t i = 0; i < 5; i++)
-	{
-		Enemy* enemy = new Enemy(m_scene);
-		float x = (float)(rand() % 800);
-		//float y = (float)(rand() % 600);
-		enemy->Create(Vector2D(x, -40.0f));
-		m_scene->AddEntity(enemy);
-	}
 	
 	m_running = success;
 
@@ -70,6 +61,8 @@ void Game::Update()
 		while (score.length() < 5) score = "0" + score;
 		text->SetText(score);
 	}
+
+	m_state->Update();
 
 	Renderer::Instance()->SetColor(Color::cyan);
 	Renderer::Instance()->BeginFrame();

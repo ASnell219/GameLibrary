@@ -29,7 +29,7 @@ void AABBComponent::Update()
 	m_aabb.Build(position, size* 0.5f);
 
 #ifdef _DEBUG
-	m_aabb.Draw(Color::red);
+	//m_aabb.Draw(Color::red);
 #endif //_DEBUG
 }
 

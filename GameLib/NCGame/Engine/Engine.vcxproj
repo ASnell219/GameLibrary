@@ -158,6 +158,8 @@
     <ClInclude Include="renderComponent.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="spriteComponent.h" />
+    <ClInclude Include="state.h" />
+    <ClInclude Include="stateMachine.h" />
     <ClInclude Include="textComponent.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="transform.h" />
@@ -191,6 +193,8 @@
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="spriteComponent.cpp" />
+    <ClCompile Include="state.cpp" />
+    <ClCompile Include="stateMachine.cpp" />
     <ClCompile Include="textComponent.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="transform.cpp" />

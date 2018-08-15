@@ -40,6 +40,9 @@
     <ClCompile Include="states.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shipExplosion.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -65,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="states.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shipExplosion.h">
+      <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

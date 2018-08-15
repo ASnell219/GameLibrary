@@ -1,2 +1,10 @@
 ﻿  aabbComponent.cpp
+  animationComponent.cpp
+  entity.cpp
+  eventManager.cpp
+  kinematicComponent.cpp
+  scene.cpp
+  spriteComponent.cpp
+  textComponent.cpp
+  Generating Code...
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

@@ -149,6 +149,9 @@
     <ClInclude Include="stateMachine.h">
       <Filter>Framework</Filter>
     </ClInclude>
+    <ClInclude Include="variant.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">

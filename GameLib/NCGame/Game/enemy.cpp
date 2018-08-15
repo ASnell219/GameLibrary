@@ -51,6 +51,8 @@ void Enemy::OnEvent(const Event & event)
 		{
 			Event _event;
 			_event.eventID = "add_score";
+			_event.variant[0].asInteger = 100;
+			_event.variant[0].type = Variant::eType::INTEGER;
 			EventManager::Instance()->SendGameMessage(_event);
 
 			EnemyExplosion* explosion = m_scene->AddEntity<EnemyExplosion>();

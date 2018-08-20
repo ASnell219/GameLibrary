@@ -1,5 +1,6 @@
 #include "entity.h"
 #include "renderComponent.h"
+#include "collisionComponent.h"
 
 
 void Entity::Destroy()
@@ -50,4 +51,19 @@ void Entity::RemoveComponent(Component * component)
 	delete *iter;
 	m_components.erase(iter);
 	
+}
+
+bool Entity::Intersects(Entity * other)
+{
+	bool intersects = false;
+
+	ICollisionComponent* collisionA = GetComponent<ICollisionComponent>();
+	ICollisionComponent* collisionB = other->GetComponent<ICollisionComponent>();
+
+	if (collisionA && collisionB)
+	{
+		intersects = collisionA->Intersects(collisionB);
+	}
+
+	return intersects;
 }

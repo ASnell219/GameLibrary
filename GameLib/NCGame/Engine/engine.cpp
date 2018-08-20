@@ -74,6 +74,11 @@ void Engine::Update()
 
 	SDL_PumpEvents();
 
+	if (InputManager::Instance()->GetButtonState(SDL_SCANCODE_GRAVE) == InputManager::eButtonState::PRESSED)
+	{
+		m_isDebug = !m_isDebug;
+	}
+
 	/*
 	SDL_SetRenderDrawColor(m_renderer, 150, 0, 255, 255);
 	SDL_RenderClear(m_renderer);

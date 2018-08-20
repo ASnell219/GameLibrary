@@ -56,13 +56,16 @@ void Renderer::DrawTexture(Texture * texture, const Vector2D & position, const V
 
 void Renderer::DebugDrawLine(const Vector2D & start, const Vector2D & end, const Color & color)
 {
-	int x1 = static_cast<int>(start.x);
-	int y1 = static_cast<int>(start.y);
-	int x2 = static_cast<int>(end.x);
-	int y2 = static_cast<int>(end.y);
+	if (m_engine->IsDebug())
+	{
+		int x1 = static_cast<int>(start.x);
+		int y1 = static_cast<int>(start.y);
+		int x2 = static_cast<int>(end.x);
+		int y2 = static_cast<int>(end.y);
 
-	SetColor(color);
-	SDL_RenderDrawLine(m_renderer, x1, y1, x2, y2);
+		SetColor(color);
+		SDL_RenderDrawLine(m_renderer, x1, y1, x2, y2);
+	}
 }
 
 Vector2D Renderer::GetSize()

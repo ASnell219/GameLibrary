@@ -1,6 +1,7 @@
 #include "enemy.h"
 #include "spriteComponent.h"
 #include "kinematicComponent.h"
+#include "enemyWaypoint.h"
 #include "enemyControllerComponent.h"
 #include "renderer.h"
 #include "aabbComponent.h"
@@ -18,8 +19,12 @@ void Enemy::Create(const Vector2D & position)
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
 	kinematic->Create(500.0f, 0.3f);
 
-	EnemyControllerComponent* enemyControllerComponent = AddComponent<EnemyControllerComponent>();
-	enemyControllerComponent->Create(200.0f);
+	//EnemyControllerComponent* enemyControllerComponent = AddComponent<EnemyControllerComponent>();
+	//enemyControllerComponent->Create(200.0f);
+
+	EnemyWaypoint* controller = AddComponent<EnemyWaypoint>();
+	std::vector<Vector2D> points = { Vector2D(100.0f, 100.0f),  Vector2D(300.0f, 400.0f), Vector2D(200.0f, 650.0f) };
+	controller->Create(200.0f, points);
 
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
 	spriteComponent->Create("enemy01A.png", Vector2D(0.5f, 0.5f));

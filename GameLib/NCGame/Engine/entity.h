@@ -55,6 +55,8 @@ public:
 		return component;
 	}
 
+	bool Intersects(Entity* other);
+
 	Scene* GetScene() { return m_scene; }
 	Transform& GetTransform() { return m_transform; }
 

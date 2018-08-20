@@ -27,20 +27,6 @@ void EnemyControllerComponent::Update()
 		if (dx > 32.0f) force.x = 1.0f;
  	}
 
-	KinematicComponent * kinematic = m_owner->GetComponent<KinematicComponent>();
-	if (kinematic)
-	{
-		kinematic->ApplyForce(force * m_speed, KinematicComponent::VELOCITY);
-	}
-
-	m_timer -= Timer::Instance()->DeltaTime();
-
-	if (m_timer <= 0.0f)
-	{
-		m_timer = Math::GetRandomRange(m_fireRateMin, m_fireRateMax);
-		Missile* missile = new Missile(m_owner->GetScene());
-		missile->Create("enemymissile", m_owner->GetTransform().position, Vector2D::up, 600.0f);
-		m_owner->GetScene()->AddEntity(missile);
-	}
+	
 	
 }

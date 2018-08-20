@@ -43,6 +43,9 @@
     <ClCompile Include="shipExplosion.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="enemyWaypoint.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="shipExplosion.h">
       <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="enemyWaypoint.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

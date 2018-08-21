@@ -67,32 +67,32 @@ Vector2D Vector2D::Normalized() const
 	}
 }
 
-inline float Vector2D::LengthSquared(const Vector2D& v1, const Vector2D& v2)
+float Vector2D::LengthSquared(const Vector2D& v1, const Vector2D& v2)
 {
 	return ((v1.x - v2.x) * (v1.x - v2.x)) + ((v1.y - v2.y) * (v1.y - v2.y));
 }
 
-inline float Vector2D::Length(const Vector2D& v1, const Vector2D& v2)
+float Vector2D::Length(const Vector2D& v1, const Vector2D& v2)
 {
 	return sqrt(LengthSquared(v1, v2));
 }
 
-inline float Vector2D::Dot(const Vector2D& v1, const Vector2D& v2)
+float Vector2D::Dot(const Vector2D& v1, const Vector2D& v2)
 {
 	return ((v1.x * v2.x) + (v1.y * v2.y));
 }
 
-inline Vector2D Vector2D::Min(const Vector2D& v1, const Vector2D& v2)
+ Vector2D Vector2D::Min(const Vector2D& v1, const Vector2D& v2)
 {
 	return Vector2D(v1.x < v2.x ? v1.x : v2.x, v1.y < v2.y ? v1.y : v2.y);
 }
 
-inline Vector2D Vector2D::Max(const Vector2D& v1, const Vector2D& v2)
+Vector2D Vector2D::Max(const Vector2D& v1, const Vector2D& v2)
 {
 	return Vector2D(v1.x > v2.x ? v1.x : v2.x, v1.y > v2.y ? v1.y : v2.y);
 }
 
-inline Vector2D Vector2D::Rotate(const Vector2D& v1, float angle)
+Vector2D Vector2D::Rotate(const Vector2D& v1, float angle)
 {
 	float x = v1.x * cos(angle) - v1.y * sin(angle);
 	float y = v1.x * sin(angle) + v1.y * cos(angle);
@@ -100,12 +100,12 @@ inline Vector2D Vector2D::Rotate(const Vector2D& v1, float angle)
 	return Vector2D(x, y);
 }
 
-inline float Vector2D::GetAngle(const Vector2D& v)
+float Vector2D::GetAngle(const Vector2D& v)
 {
 	return atan2(v.y, v.x);
 }
 
-inline Vector2D Vector2D::GetRandomUnitCircle()
+Vector2D Vector2D::GetRandomUnitCircle()
 {
 	return Rotate(Vector2D::up, Math::GetRandomRange(0.0f, Math::TwoPI));
 }

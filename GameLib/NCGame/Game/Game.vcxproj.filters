@@ -46,6 +46,9 @@
     <ClCompile Include="enemyWaypoint.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="enemyTarget.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -76,6 +79,9 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="enemyWaypoint.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="enemyTarget.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -63,14 +63,14 @@ public:
 	const Vector2D& Normalize();
 	Vector2D Normalized() const;
 
-	inline static float LengthSquared(const Vector2D& v1, const Vector2D& v2);
-	inline static float Length(const Vector2D& v1, const Vector2D& v2);
-	inline static float Dot(const Vector2D& v1, const Vector2D& v2);
-	inline static Vector2D Min(const Vector2D& v1, const Vector2D& v2);
-	inline static Vector2D Max(const Vector2D& v1, const Vector2D& v2);
-	inline static Vector2D Rotate(const Vector2D& v1, float angle);
-	inline static float GetAngle(const Vector2D& v);
-	inline static Vector2D GetRandomUnitCircle();
+	static float LengthSquared(const Vector2D& v1, const Vector2D& v2);
+	static float Length(const Vector2D& v1, const Vector2D& v2);
+	static float Dot(const Vector2D& v1, const Vector2D& v2);
+	static Vector2D Min(const Vector2D& v1, const Vector2D& v2);
+	static Vector2D Max(const Vector2D& v1, const Vector2D& v2);
+	static Vector2D Rotate(const Vector2D& v1, float angle);
+	static float GetAngle(const Vector2D& v);
+	static Vector2D GetRandomUnitCircle();
 	
 	//friend std::ostream & operator << (std::ostream & stream, const Vector2D & v) { stream << "{" << v.x << ", " << v.y << "}"; return stream; }
 	//friend std::istream & operator >> (std::istream & stream, Vector2D & v);

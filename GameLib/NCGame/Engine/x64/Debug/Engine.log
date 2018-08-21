@@ -1,5 +1,31 @@
-﻿  aabbComponent.cpp
+﻿  _math.cpp
+  aabb.cpp
+  aabbComponent.cpp
+  animationComponent.cpp
+  color.cpp
   debugDraw.cpp
+  engine.cpp
+  entity.cpp
+  eventManager.cpp
+  inputManager.cpp
+  kinematicComponent.cpp
+  matrix22.cpp
+  matrix33.cpp
+  physics.cpp
+  renderer.cpp
+  scene.cpp
+  spriteComponent.cpp
+  text.cpp
+  textComponent.cpp
+  textManager.cpp
+  Generating Code...
+  Compiling...
+  texture.cpp
+  textureManager.cpp
+  transform.cpp
+  vector2D.cpp
+  vector3D.cpp
+  waypoint.cpp
   Generating Code...
      Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.exp
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.dll

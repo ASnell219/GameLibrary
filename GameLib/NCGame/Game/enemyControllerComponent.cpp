@@ -27,6 +27,4 @@ void EnemyControllerComponent::Update()
 		if (dx > 32.0f) force.x = 1.0f;
  	}
 
-	
-	
 }

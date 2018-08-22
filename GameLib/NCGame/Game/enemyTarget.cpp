@@ -22,7 +22,7 @@ void EnemyTarget::Update()
 
 	Vector2D direction = m_target - m_owner->GetTransform().position;
 	float rotation = (Vector2D::GetAngle(direction) * Math::RadiansToDegrees + 90.0f);
-	m_owner->GetTransform().rotation = Math::LerpDegrees(m_owner->GetTransform().rotation, rotation, 2.0f * dt);
+	m_owner->GetTransform().rotation = Math::LerpDegrees(m_owner->GetTransform().rotation, rotation, 4.0f * dt);
 
 	Vector2D force = Vector2D::Rotate(Vector2D::down, m_owner->GetTransform().rotation * Math::DegreesToRadians);
 	//DEBUG_DRAW_LINE(m_owner->GetTransform().rotation, (m_owner->GetTransform().rotation + force * 60.0f), Color::black);

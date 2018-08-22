@@ -12,7 +12,7 @@ void EnemyWaypoint::Create(float speed, const std::vector<Vector2D>& points)
 	for (Vector2D point : points)
 	{
 		Waypoint* waypoint = m_owner->GetScene()->AddEntity<Waypoint>();
-		waypoint->Create(point, Vector2D(10.0f, 10.0f), m_owner);
+		waypoint->Create(point, Vector2D(55.0f, 55.0f), m_owner);
 		m_waypoints.push_back(waypoint);
 	}
 
@@ -38,19 +38,19 @@ void EnemyWaypoint::Update()
 	DEBUG_DRAW_LINE(m_owner->GetTransform().position, m_waypoint->GetTransform().position, Color::black)
 
 	float dt = Timer::Instance()->DeltaTime();
-	m_timer -= dt;
+	//m_timer -= dt;
 
-	Vector2D force = m_waypoint->GetTransform().position - m_owner->GetTransform().position;
-	force.Normalize();
+	Vector2D direction = m_waypoint->GetTransform().position - m_owner->GetTransform().position;
+	float rotation = (Vector2D::GetAngle(direction) * Math::RadiansToDegrees + 90.0f);
+	m_owner->GetTransform().rotation = Math::LerpDegrees(m_owner->GetTransform().rotation, rotation, 2.0f * dt);
+
+	Vector2D force = Vector2D::Rotate(Vector2D::down, m_owner->GetTransform().rotation * Math::DegreesToRadians);
 
 	KinematicComponent * kinematic = m_owner->GetComponent<KinematicComponent>();
 	if (kinematic)
 	{
 		kinematic->ApplyForce(force * m_speed, KinematicComponent::VELOCITY);
 	}
-
-	float rotation = Vector2D::GetAngle(force) * Math::RadiansToDegrees - 90.0f;
-	m_owner->GetTransform().rotation = Math::Lerp(m_owner->GetTransform().rotation, rotation, 5.0 * dt);
 
 	//if (m_timer <= 0.0f)
 	//{
@@ -70,6 +70,8 @@ void EnemyWaypoint::SetNextWaypoint()
 	}
 	else
 	{
-		m_owner->SetState(Entity::DESTROY);
+		m_isComplete = true;
+		m_waypointIndex = 0;
+		m_waypoint = m_waypoints[m_waypointIndex];
 	}
 }

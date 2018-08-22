@@ -14,8 +14,10 @@ public:
 	void Update();
 
 	void SetNextWaypoint();
+	bool isComplete() { return m_isComplete; }
 
 protected:
+	bool m_isComplete = false;
 	float m_speed = 0.0f;
 
 	float m_timer = 0.0f;

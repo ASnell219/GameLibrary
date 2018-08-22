@@ -40,9 +40,9 @@ void GameState::Enter()
 	for (size_t i = 0; i < 5; i++)
 	{
 		Enemy* enemy = new Enemy(m_owner->GetScene());
-		float x = (float)(rand() % 800);
-		//float y = (float)(rand() % 600);
-		enemy->Create(Vector2D(x, -40.0f));
+		float x = -64.0f - (i * 32.0f);
+		float y = (400.0f);
+		enemy->Create(Vector2D(x, y), Vector2D(800.0f, 300.0f));
 		m_owner->GetScene()->AddEntity(enemy);
 	}
 }

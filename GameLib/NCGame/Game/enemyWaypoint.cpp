@@ -12,7 +12,7 @@ void EnemyWaypoint::Create(float speed, const std::vector<Vector2D>& points)
 	for (Vector2D point : points)
 	{
 		Waypoint* waypoint = m_owner->GetScene()->AddEntity<Waypoint>();
-		waypoint->Create(point, Vector2D(55.0f, 55.0f), m_owner);
+		waypoint->Create(point, Vector2D(60.0f, 60.0f), m_owner);
 		m_waypoints.push_back(waypoint);
 	}
 
@@ -42,7 +42,7 @@ void EnemyWaypoint::Update()
 
 	Vector2D direction = m_waypoint->GetTransform().position - m_owner->GetTransform().position;
 	float rotation = (Vector2D::GetAngle(direction) * Math::RadiansToDegrees + 90.0f);
-	m_owner->GetTransform().rotation = Math::LerpDegrees(m_owner->GetTransform().rotation, rotation, 2.0f * dt);
+	m_owner->GetTransform().rotation = Math::LerpDegrees(m_owner->GetTransform().rotation, rotation, 4.0f * dt);
 
 	Vector2D force = Vector2D::Rotate(Vector2D::down, m_owner->GetTransform().rotation * Math::DegreesToRadians);
 

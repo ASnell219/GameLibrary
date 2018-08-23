@@ -151,6 +151,7 @@
     <ClCompile Include="shipControllerComponent.cpp" />
     <ClCompile Include="shipExplosion.cpp" />
     <ClCompile Include="states.cpp" />
+    <ClCompile Include="transformController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -169,6 +170,7 @@
     <ClInclude Include="shipControllerComponent.h" />
     <ClInclude Include="shipExplosion.h" />
     <ClInclude Include="states.h" />
+    <ClInclude Include="transformController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

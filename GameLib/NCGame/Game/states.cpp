@@ -40,9 +40,13 @@ void GameState::Enter()
 	for (size_t i = 0; i < 5; i++)
 	{
 		Enemy* enemy = new Enemy(m_owner->GetScene());
-		float x = -64.0f - (i * 32.0f);
-		float y = (400.0f);
-		enemy->Create(Vector2D(x, y), Vector2D(800.0f, 300.0f));
+		Vector2D start;
+		start.x = -64.0f - (i * 32.0f);
+		start.y = (400.0f);
+		Vector2D target;
+		target.x = 100.0f + (i * 40.0f);
+		target.y = 100.0f;
+		enemy->Create(start, target);
 		m_owner->GetScene()->AddEntity(enemy);
 	}
 }

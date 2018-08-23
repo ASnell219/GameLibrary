@@ -24,11 +24,21 @@ protected:
 	
 };
 
-class EnterState : public IState
+class EnterPathState : public IState
 {
 public:
 
-	EnterState(StateMachine* owner) : IState(owner) {}
+	EnterPathState(StateMachine* owner) : IState(owner) {}
+
+	void Enter();
+	void Update();
+	void Exit();
+};
+
+class EnterFormationState : public IState
+{
+public:
+	EnterFormationState(StateMachine* owner) : IState(owner) {}
 
 	void Enter();
 	void Update();
@@ -40,9 +50,14 @@ class IdleState : public IState
 public:
 	IdleState(StateMachine* owner) : IState(owner) {}
 
-	void Enter() {}
-	void Update() {}
+	void Enter();
+	void Update();
 	void Exit() {}
+
+protected:
+	float m_timeMin = 2.0f;
+	float m_timeMax = 4.0f;
+	float m_timer = 0.0f;
 };
 
 class AttackState : public IState
@@ -50,7 +65,7 @@ class AttackState : public IState
 public:
 	AttackState(StateMachine* owner) : IState(owner) {}
 
-	void Enter() {}
-	void Update() {}
+	void Enter();
+	void Update();
 	void Exit() {}
 };

@@ -37,18 +37,21 @@ void TitleState::Exit()
 
 void GameState::Enter()
 {
-	for (size_t i = 0; i < 5; i++)
+	std::vector<Enemy::Info> formation =
+	{	{ Enemy::BEE, Enemy::LEFT, 400.0f, Vector2D(100.0f, 100.0f) }, 
+		{ Enemy::BOSS, Enemy::RIGHT, 400.0f, Vector2D(700.0f, 100.0f) }, 
+		{ Enemy::BEE, Enemy::LEFT, 400.0f, Vector2D(150.0f, 100.0f) }, 
+		{ Enemy::BOSS, Enemy::RIGHT, 400.0f, Vector2D(650.0f, 100.0f) },
+		{ Enemy::BEE, Enemy::LEFT, 400.0f, Vector2D(200.0f, 100.0f) },
+		{ Enemy::BOSS, Enemy::RIGHT, 400.0f, Vector2D(600.0f, 100.0f) },
+	};
+
+	for (Enemy::Info info : formation)
 	{
-		Enemy* enemy = new Enemy(m_owner->GetScene());
-		Vector2D start;
-		start.x = -64.0f - (i * 32.0f);
-		start.y = (400.0f);
-		Vector2D target;
-		target.x = 100.0f + (i * 40.0f);
-		target.y = 100.0f;
-		enemy->Create(start, target);
-		m_owner->GetScene()->AddEntity(enemy);
+		Enemy* enemy = m_owner->GetScene()->AddEntity<Enemy>();
+		enemy->Create(info);
 	}
+
 }
 
 void GameState::Update()

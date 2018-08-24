@@ -1,3 +1,44 @@
-﻿  engine.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+﻿  aabb.cpp
+  aabbComponent.cpp
+  animationComponent.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\animationcomponent.cpp(28): warning C4018: '>=': signed/unsigned mismatch
+  audioSystem.cpp
+  color.cpp
+  controllerComponent.cpp
+  debugDraw.cpp
+  engine.cpp
+  entity.cpp
+  eventManager.cpp
+  fileSystem.cpp
+  id.cpp
+  inputManager.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(143): warning C4018: '<': signed/unsigned mismatch
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(166): warning C4018: '<': signed/unsigned mismatch
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(208): warning C4018: '<': signed/unsigned mismatch
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(231): warning C4018: '<': signed/unsigned mismatch
+  kinematicComponent.cpp
+  object.cpp
+  physics.cpp
+  scene.cpp
+  spriteComponent.cpp
+  state.cpp
+  stateMachine.cpp
+  Generating Code...
+  Compiling...
+  textComponent.cpp
+  texture.cpp
+  transform.cpp
+  waypoint.cpp
+  _math.cpp
+  matrix22.cpp
+  matrix33.cpp
+  renderer.cpp
+  text.cpp
+  textManager.cpp
+  textureManager.cpp
+  timer.cpp
+  vector2D.cpp
+  vector3D.cpp
+  Generating Code...
+     Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Debug\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Debug\Engine.exp
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Debug\Engine.dll

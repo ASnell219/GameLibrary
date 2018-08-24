@@ -47,7 +47,7 @@ void Entity::RemoveComponent(Component * component)
 	//assert(std::find(m_components.begin(), m_components.end(), component) != m_components.end());
 	
 	auto iter = std::find(m_components.begin(), m_components.end(), component);
-
+	(*iter)->Destroy();
 	delete *iter;
 	m_components.erase(iter);
 	

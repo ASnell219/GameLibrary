@@ -11,7 +11,7 @@ public:
 	void SetVisible(bool visible = true) { m_visible = visible; }
 	bool GetVisible() const { return m_visible; }
 
-	void SetDepth(bool depth = true) { m_depth = depth; }
+	void SetDepth(int depth ) { m_depth = depth; }
 	int GetDepth() const { return m_depth; }
 
 	static bool CompareDepth(IRenderComponent* renderComponent1, IRenderComponent* renderComponent2)

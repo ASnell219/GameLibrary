@@ -1,33 +1,47 @@
-﻿  audioSystem.cpp
+﻿  aabb.cpp
+  aabbComponent.cpp
+  animationComponent.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\animationcomponent.cpp(28): warning C4018: '>=': signed/unsigned mismatch
+  audioSystem.cpp
   color.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  controllerComponent.cpp
+  debugDraw.cpp
   engine.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+  entity.cpp
+  eventManager.cpp
+  fileSystem.cpp
+  id.cpp
   inputManager.cpp
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(143): warning C4018: '<': signed/unsigned mismatch
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(166): warning C4018: '<': signed/unsigned mismatch
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(208): warning C4018: '<': signed/unsigned mismatch
 c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\inputmanager.cpp(231): warning C4018: '<': signed/unsigned mismatch
-  math.cpp
+  kinematicComponent.cpp
+  object.cpp
+  physics.cpp
+  scene.cpp
+  spriteComponent.cpp
+  state.cpp
+  stateMachine.cpp
+  Compiling...
+  textComponent.cpp
+  texture.cpp
+  transform.cpp
+  transformController.cpp
+  waypoint.cpp
+  waypointComponent.cpp
+  _math.cpp
   matrix22.cpp
   matrix33.cpp
   renderer.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(43): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\renderer.cpp(44): warning C4244: '*=': conversion from 'const float' to 'int', possible loss of data
   text.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   textManager.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   textureManager.cpp
-c:\neumont\q4\gamelibrary\gamelib\ncgame\engine\color.h(41): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
   timer.cpp
   vector2D.cpp
   vector3D.cpp
      Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Release\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Release\Engine.exp
   Generating code
-  462 of 882 functions (52.4%) were compiled, the rest were copied from previous compilation.
-    304 functions were new in current compilation
-    44 functions had inline decision re-evaluated but remain unchanged
+  All 2082 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Engine.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Release\Engine.dll

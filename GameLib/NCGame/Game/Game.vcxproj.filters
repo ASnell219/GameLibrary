@@ -34,20 +34,14 @@
     <ClCompile Include="enemyControllerComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="enemyExplosion.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
     <ClCompile Include="states.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shipExplosion.cpp">
+    <ClCompile Include="formation.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="enemyWaypoint.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="transformController.cpp">
-      <Filter>Components</Filter>
+    <ClCompile Include="explosion.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,20 +63,14 @@
     <ClInclude Include="enemyControllerComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="enemyExplosion.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
     <ClInclude Include="states.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="shipExplosion.h">
+    <ClInclude Include="formation.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="enemyWaypoint.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="transformController.h">
-      <Filter>Components</Filter>
+    <ClInclude Include="explosion.h">
+      <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

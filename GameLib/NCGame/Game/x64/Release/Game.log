@@ -1,1 +1,12 @@
-﻿  Game.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Game.exe
+﻿  enemy.cpp
+  explosion.cpp
+  game.cpp
+  missile.cpp
+  ship.cpp
+  states.cpp
+  Generating code
+  2 of 489 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Game.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Release\Game.exe

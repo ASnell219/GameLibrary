@@ -1,1 +1,16 @@
-﻿  Game.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Release\Game.exe
+﻿  enemy.cpp
+  enemyControllerComponent.cpp
+  explosion.cpp
+  formation.cpp
+  game.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\game\game.cpp(34): warning C4305: 'argument': truncation from 'int' to 'bool'
+  main.cpp
+  missile.cpp
+  ship.cpp
+  shipControllerComponent.cpp
+  states.cpp
+c:\neumont\q4\gamelibrary\gamelib\ncgame\game\states.cpp(14): warning C4305: 'argument': truncation from 'int' to 'bool'
+  Generating code
+  All 490 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Game.vcxproj -> C:\Neumont\Q4\GameLibrary\GameLib\NCGame\Release\Game.exe

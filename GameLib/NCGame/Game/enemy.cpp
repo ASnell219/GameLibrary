@@ -1,14 +1,13 @@
 #include "enemy.h"
 #include "spriteComponent.h"
 #include "kinematicComponent.h"
-#include "enemyWaypoint.h"
+#include "waypointComponent.h"
 #include "enemyControllerComponent.h"
 #include "renderer.h"
 #include "aabbComponent.h"
 #include "audioSystem.h"
 #include "eventManager.h"
-#include "enemyExplosion.h"
-#include "enemyWaypoint.h"
+#include "explosion.h"
 #include "animationComponent.h"
 #include "transformController.h"
 #include "timer.h"
@@ -67,8 +66,8 @@ void Enemy::OnEvent(const Event & event)
 			_event.variant[0].type = Variant::eType::INTEGER;
 			EventManager::Instance()->SendGameMessage(_event);
 
-			EnemyExplosion* explosion = m_scene->AddEntity<EnemyExplosion>();
-			explosion->Create(m_transform.position);
+			Explosion* explosion = m_scene->AddEntity<Explosion>();
+			explosion->Create(m_transform.position, Explosion::eType::ENEMY);
 
 			SetState(Entity::DESTROY);
 		}
@@ -77,13 +76,13 @@ void Enemy::OnEvent(const Event & event)
 
 void EnterPathState::Enter()
 {
-	EnemyWaypoint* waypoint = m_owner->GetEntity()->AddComponent<EnemyWaypoint>();
+	WaypointComponent* waypoint = m_owner->GetEntity()->AddComponent<WaypointComponent>();
 	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, Enemy::m_enterPath);
 }
 
 void EnterPathState::Update()
 {
-	EnemyWaypoint* waypoint = m_owner->GetEntity()->GetComponent<EnemyWaypoint>();
+	WaypointComponent* waypoint = m_owner->GetEntity()->GetComponent<WaypointComponent>();
 	if (waypoint && waypoint->isComplete())
 	{
 		m_owner->GetEntity()->RemoveComponent(waypoint);
@@ -97,13 +96,13 @@ void EnterPathState::Exit()
 
 void EnterFormationState::Enter() 
 {
-	EnemyWaypoint* waypoint = m_owner->GetEntity()->AddComponent<EnemyWaypoint>();
+	WaypointComponent* waypoint = m_owner->GetEntity()->AddComponent<WaypointComponent>();
 	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, std::vector<Vector2D> { m_owner->GetEntity<Enemy>()->m_info.target});
 }
 
 void EnterFormationState::Update() 
 {
-	EnemyWaypoint* waypoint = m_owner->GetEntity()->GetComponent<EnemyWaypoint>();
+	WaypointComponent* waypoint = m_owner->GetEntity()->GetComponent<WaypointComponent>();
 	if (waypoint && waypoint->isComplete())
 	{
 		m_owner->GetEntity()->RemoveComponent(waypoint);
@@ -138,13 +137,13 @@ void IdleState::Update()
 
 void AttackState::Enter()
 {
-	EnemyWaypoint* waypoint = m_owner->GetEntity()->AddComponent<EnemyWaypoint>();
+	WaypointComponent* waypoint = m_owner->GetEntity()->AddComponent<WaypointComponent>();
 	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, Enemy::m_enterPath);
 }
 
 void AttackState::Update()
 {
-	EnemyWaypoint* waypoint = m_owner->GetEntity()->GetComponent<EnemyWaypoint>();
+	WaypointComponent* waypoint = m_owner->GetEntity()->GetComponent<WaypointComponent>();
 	if (waypoint && waypoint->isComplete())
 	{
 		m_owner->GetEntity()->RemoveComponent(waypoint);

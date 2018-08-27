@@ -158,6 +158,12 @@
     <ClInclude Include="debugDraw.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="transformController.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="waypointComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -261,6 +267,12 @@
     </ClCompile>
     <ClCompile Include="debugDraw.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="transformController.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="waypointComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

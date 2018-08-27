@@ -141,16 +141,14 @@
   <ItemGroup>
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="enemyControllerComponent.cpp" />
-    <ClCompile Include="enemyExplosion.cpp" />
-    <ClCompile Include="enemyWaypoint.cpp" />
+    <ClCompile Include="explosion.cpp" />
+    <ClCompile Include="formation.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="missile.cpp" />
     <ClCompile Include="ship.cpp" />
     <ClCompile Include="shipControllerComponent.cpp" />
-    <ClCompile Include="shipExplosion.cpp" />
     <ClCompile Include="states.cpp" />
-    <ClCompile Include="transformController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -160,15 +158,13 @@
   <ItemGroup>
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemyControllerComponent.h" />
-    <ClInclude Include="enemyExplosion.h" />
-    <ClInclude Include="enemyWaypoint.h" />
+    <ClInclude Include="explosion.h" />
+    <ClInclude Include="formation.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="missile.h" />
     <ClInclude Include="ship.h" />
     <ClInclude Include="shipControllerComponent.h" />
-    <ClInclude Include="shipExplosion.h" />
     <ClInclude Include="states.h" />
-    <ClInclude Include="transformController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

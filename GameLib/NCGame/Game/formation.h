@@ -28,6 +28,6 @@ protected:
 	std::vector<Info> m_formation;
 	float m_timer = 0.0f;
 
-	Path m_enterPaths[2];
+	Path m_enterPaths[4];
 	std::vector<Path> m_attackPaths;
 };

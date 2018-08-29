@@ -1,4 +1,8 @@
-﻿  transformController.cpp
+﻿  animationComponent.cpp
+  engine.cpp
+  kinematicComponent.cpp
+  timer.cpp
+  transformController.cpp
   waypointComponent.cpp
   Generating Code...
      Creating library C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.lib and object C:\Neumont\Q4\GameLibrary\GameLib\NCGame\x64\Debug\Engine.exp

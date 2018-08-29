@@ -23,6 +23,7 @@ bool Game::Initialize()
 	m_state = new StateMachine(m_scene);
 
 	m_state->AddState("title", new TitleState(m_state));
+	m_state->AddState("enter_stage", new EnterStageState(m_state));
 	m_state->AddState("game", new GameState(m_state));
 
 	m_state->SetState("title");
@@ -82,8 +83,6 @@ void Game::OnEvent(const Event & event)
 }
 
 
-
-
 //InputManager::Instance()->AddAction("fire", SDL_BUTTON_LEFT, InputManager::eDevice::MOUSE);
 
 
@@ -118,3 +117,6 @@ Renderer::Instance()->DrawTexture(texture, position, angle);*/
 //std::vector<Color> colors = { Color::red, Color::green, Color::white };
 //text->SetText("Hello World!", colors[rand() % colors.size()]);
 //text->Draw(Vector2D(10.0f, 10.0f), 0.0f);
+
+
+//The end

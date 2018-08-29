@@ -11,6 +11,7 @@
 #include "animationComponent.h"
 #include "transformController.h"
 #include "timer.h"
+#include "formation.h"
 
 std::vector<Vector2D> Enemy::m_enterPath = { Vector2D(200.0f, 400.0f), Vector2D(300.0f, 300.0f), Vector2D(200.0f, 200.0f), Vector2D(100.0f, 300.0f), Vector2D(200.0f, 400.0f) };
 
@@ -19,7 +20,7 @@ void Enemy::Create(const Info& info)
 	m_info = info;
 
 	SetTag("enemy");
-	m_transform.position = (m_info.side == LEFT) ? Vector2D(-64.0f, 400.0f) : Vector2D(864.0f, 400.0f);
+	m_transform.position = Vector2D::zero;
 	m_transform.scale = Vector2D(2.0f, 2.0f);
 
 	KinematicComponent* kinematic = AddComponent<KinematicComponent>();
@@ -30,6 +31,7 @@ void Enemy::Create(const Info& info)
 	std::vector<std::string> animations;
 	if (m_info.type == BEE) animations = { "enemy02A.png", "enemy02B.png" };
 	if (m_info.type == BOSS) animations = { "enemy01A.png", "enemy01B.png" };
+	if (m_info.type == BUG) animations = { "enemy03A.png", "enemy03B.png" };
 	animation->Create(animations, 1.0f / 4.0f);
 
 	SpriteComponent* spriteComponent = AddComponent<SpriteComponent>();
@@ -77,7 +79,7 @@ void Enemy::OnEvent(const Event & event)
 void EnterPathState::Enter()
 {
 	WaypointComponent* waypoint = m_owner->GetEntity()->AddComponent<WaypointComponent>();
-	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, Enemy::m_enterPath);
+	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, m_owner->GetEntity<Enemy>()->m_info.formation->GetEnterPath(m_owner->GetEntity<Enemy>()->m_info.side), 5.0f, true);
 }
 
 void EnterPathState::Update()
@@ -97,7 +99,7 @@ void EnterPathState::Exit()
 void EnterFormationState::Enter() 
 {
 	WaypointComponent* waypoint = m_owner->GetEntity()->AddComponent<WaypointComponent>();
-	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, std::vector<Vector2D> { m_owner->GetEntity<Enemy>()->m_info.target});
+	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, std::vector<Vector2D> { m_owner->GetEntity<Enemy>()->m_info.target}, 5.0f);
 }
 
 void EnterFormationState::Update() 
@@ -138,7 +140,7 @@ void IdleState::Update()
 void AttackState::Enter()
 {
 	WaypointComponent* waypoint = m_owner->GetEntity()->AddComponent<WaypointComponent>();
-	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, Enemy::m_enterPath);
+	waypoint->Create(m_owner->GetEntity<Enemy>()->m_info.speed, m_owner->GetEntity<Enemy>()->m_info.formation->GetRandomAttackPath(), 5.0f);
 }
 
 void AttackState::Update()

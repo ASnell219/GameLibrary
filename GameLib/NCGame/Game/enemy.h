@@ -11,12 +11,15 @@ public:
 	{
 		BEE,
 		BOSS,
+		BUG
 	};
 
 	enum eSide
 	{
-		LEFT,
-		RIGHT,
+		BOTTOMLEFT,
+		BOTTOMRIGHT,
+		TOPLEFT,
+		TOPRIGHT,
 	};
 
 	struct Info

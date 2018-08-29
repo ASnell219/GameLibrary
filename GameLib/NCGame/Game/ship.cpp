@@ -48,4 +48,5 @@ void Ship::OnEvent(const Event & event)
 			SetState(Entity::DESTROY);
 		}
 	}
+	
 }

@@ -22,3 +22,8 @@ void Timer::Update()
 void Timer::Shutdown()
 {
 }
+
+void Timer::Reset()
+{
+	m_prevTicks = SDL_GetTicks();
+}

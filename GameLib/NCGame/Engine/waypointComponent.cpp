@@ -4,10 +4,10 @@
 #include "timer.h"
 #include "debugDraw.h"
 
-void WaypointComponent::Create(float speed, const std::vector<Vector2D>& points)
+void WaypointComponent::Create(float speed, const std::vector<Vector2D>& points, float turnRate, bool setPosition)
 {
 	m_speed = speed;
-	m_timer = Math::GetRandomRange(m_fireRateMin, m_fireRateMax);
+	m_turnRate = turnRate;
 
 	for (Vector2D point : points)
 	{
@@ -18,6 +18,11 @@ void WaypointComponent::Create(float speed, const std::vector<Vector2D>& points)
 
 	m_waypointIndex = 0;
 	m_waypoint = m_waypoints[m_waypointIndex];
+
+	if (setPosition)
+	{
+		m_owner->GetTransform().position = m_waypoint->GetTransform().position;
+	}
 }
 
 void WaypointComponent::Destroy()
